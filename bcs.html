@@ -1,0 +1,49 @@
+<body>
+
+<h1>🇧🇩 BCS Preparation</h1>
+<p>Prepare smartly for Bangladesh Civil Service.</p>
+
+<h2>📦 Module 1: Bangla Grammar</h2>
+
+<div class="lesson" id="lesson-bcs-bangla">
+    <h3>Lesson 1: Parts of Speech</h3>
+
+    <video width="600" controls>
+        <source src="videos/bcs-bangla.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <p><strong>Notes:</strong> Parts of speech include noun, pronoun, verb, adjective, adverb, preposition, conjunction, and interjection.</p>
+
+    <a href="notes/bcs-bangla.pdf" download>📥 Download Notes</a>
+    <br><br>
+
+    <button id="btn-bcs-bangla">✔ Mark as Completed</button>
+    <span id="status-lesson-bcs-bangla"></span>
+</div>
+
+<br>
+<a href="index.html">⬅ Back to Home</a>
+
+<script>
+    const lessonId = "lesson-bcs-bangla";
+    const button = document.getElementById("btn-bcs-bangla");
+
+    button.addEventListener("click", function () {
+        localStorage.setItem(lessonId, "completed");
+        updateStatus();
+    });
+
+    function updateStatus() {
+        const status = document.getElementById("status-" + lessonId);
+        if (localStorage.getItem(lessonId) === "completed") {
+            status.innerHTML = " ✅ Completed";
+            status.style.color = "green";
+        }
+    }
+
+    // Load saved progress on page load
+    updateStatus();
+</script>
+
+</body>

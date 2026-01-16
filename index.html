@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Smart Learning Platform
+
+    </title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <h1>Welcome to My Learning Hub</h1>
+    <p>Your personal platform for IT, BCS & Bank Job Preparation</p>
+
+    <hr>
+
+    <h2>📚 Course Categories</h2>
+
+   <ul>
+    <li><a href="it.html">💻 IT Courses</a></li>
+    <li><a href="bcs.html">🇧🇩 BCS Preparation</a></li>
+    <li><a href="bank.html">🏦 Bank Job Preparation</a></li>
+    <li>Full Stack Web Development – HTML, CSS, JS, Backend</li>
+
+</ul>
+
+    <div id="content">
+    <h3>Select a category to view courses</h3>
+</div>
+
+
+    <p>More features coming soon...</p>
+    <script>
+    const it = document.getElementById("it");
+    const bcs = document.getElementById("bcs");
+    const bank = document.getElementById("bank");
+    const content = document.getElementById("content");
+
+    it.addEventListener("click", function() {
+        content.innerHTML = `
+            <h3>💻 IT Courses</h3>
+            <ul>
+                <li>Web Development</li>
+                <li>Programming Basics</li>
+                <li>AI & Machine Learning</li>
+            </ul>
+        `;
+    });
+
+    bcs.addEventListener("click", function() {
+        content.innerHTML = `
+            <h3>🇧🇩 BCS Preparation</h3>
+            <ul>
+                <li>Bangla</li>
+                <li>English</li>
+                <li>General Knowledge</li>
+                <li>Math & Mental Ability</li>
+            </ul>
+        `;
+    });
+
+    bank.addEventListener("click", function() {
+        content.innerHTML = `
+            <h3>🏦 Bank Job Preparation</h3>
+            <ul>
+                <li>Quantitative Aptitude</li>
+                <li>Reasoning</li>
+                <li>Computer Knowledge</li>
+                <li>Model Tests</li>
+            </ul>
+        `;
+    });
+    const notes = document.getElementById("notes");
+
+notes.addEventListener("click", function() {
+    content.innerHTML = `
+        <h3>📖 My Notes</h3>
+        <p>Here I will store my personal study notes.</p>
+    `;
+});
+
+</script>
+
+
+</body>
+</html>

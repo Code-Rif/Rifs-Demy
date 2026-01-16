@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Job Preparation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Page-specific styling kept inline for quick edits -->
+    <style>
+        body { margin: 0; font-family: 'Poppins','Inter', Arial, sans-serif; background: radial-gradient(1200px 500px at 10% -10%, #dbeafe 0%, transparent 60%), radial-gradient(1200px 500px at 90% -10%, #fce7f3 0%, transparent 60%), linear-gradient(180deg, #f8fafc, #eef2ff); color: #0f172a; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #0f172a, #1d4ed8, #7c3aed); color: white; padding: 56px 20px; text-align: center; box-shadow: 0 16px 40px rgba(2,6,23,0.25); position: relative; overflow: hidden; }
+        .hero::after { content: ''; position: absolute; inset: -50% 0 auto auto; width: 480px; height: 480px; background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%); transform: translate(20%, -20%); }
+        .hero h1 { margin: 0; font-size: 2.7em; letter-spacing: -0.6px; }
+        .hero p { margin: 12px 0 0 0; color: #e5e7eb; font-size: 1.08em; }
+
+        /* Theme toggle */
+        .theme-toggle { position: fixed; top: 18px; right: 18px; width: 52px; height: 52px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; color: #1d4ed8; font-size: 22px; cursor: pointer; box-shadow: 0 14px 34px rgba(0,0,0,0.18); z-index: 100; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .theme-toggle:hover { transform: scale(1.06); box-shadow: 0 12px 30px rgba(0,0,0,0.16); }
+        body.dark { background: #0b1220; color: #e2e8f0; }
+        body.dark .card, body.dark .lesson, body.dark .mock-card, body.dark .mcq-card { background: #111827; border: 1px solid #1f2937; }
+        body.dark .hero { background: linear-gradient(135deg, #0f172a, #111827); }
+        body.dark .module-tabs button { background: #1f2937; color: #e2e8f0; border: 1px solid #1f2937; }
+        body.dark .module-tabs button.active { background: #2563eb; color: #0b1220; border-color: #2563eb; }
+
+        /* Search */
+        .search-wrap { max-width: 560px; margin: 18px auto; padding: 0 16px; }
+        .search-box { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid #d6deeb; font-size: 15px; outline: none; box-shadow: 0 10px 26px rgba(59,130,246,0.12); transition: border-color 0.2s ease, box-shadow 0.2s ease; background: #ffffffcc; backdrop-filter: blur(6px); }
+        .search-box:focus { border-color: #2563eb; box-shadow: 0 10px 24px rgba(37,99,235,0.15); }
+
+        /* Stats */
+        .stats { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 22px auto; max-width: 1100px; padding: 0 16px; }
+        .card { background: #ffffff; padding: 18px 22px; border-radius: 16px; box-shadow: 0 16px 32px rgba(15,23,42,0.12); min-width: 190px; text-align: center; border: 1px solid #e5e7eb; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(15,23,42,0.16); }
+        .card h3 { margin: 6px 0 0 0; color: #2563eb; font-size: 2em; letter-spacing: -0.3px; }
+        .card small { color: #64748b; }
+
+        /* Progress */
+        .progress-wrap { max-width: 900px; margin: 12px auto 32px; padding: 0 16px; }
+        .progress-track { background: #e5e7eb; height: 18px; border-radius: 12px; overflow: hidden; border: 1px solid #dce3ed; box-shadow: inset 0 2px 6px rgba(15,23,42,0.12); }
+        .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #22c55e, #2563eb, #7c3aed); color: white; font-size: 12px; text-align: center; line-height: 18px; transition: width 0.4s ease; }
+
+        /* Carousel */
+        .carousel { max-width: 980px; margin: 20px auto; background: linear-gradient(135deg, #e0f2fe, #eef2ff, #fce7f3); border-radius: 18px; padding: 26px; position: relative; overflow: hidden; box-shadow: 0 16px 36px rgba(15,23,42,0.16); }
+        .carousel h2 { text-align: center; color: #0ea5e9; margin: 0 0 14px 0; }
+        .carousel-window { overflow: hidden; }
+            .carousel-track { display: flex; transition: transform 0.6s ease; }
+        .slide { min-width: 100%; padding: 10px; box-sizing: border-box; text-align: center; }
+        .slide .icon { width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 18px; display: grid; place-items: center; font-size: 52px; color: white; box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
+        .slide h3 { margin: 8px 0 6px 0; color: #0f172a; }
+        .slide p { margin: 0; color: #475569; font-size: 14px; }
+        .c-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: none; background: #0ea5e9; color: white; font-size: 18px; cursor: pointer; box-shadow: 0 10px 24px rgba(0,0,0,0.16); }
+        .c-btn.prev { left: 12px; } .c-btn.next { right: 12px; }
+        .dots { text-align: center; margin-top: 10px; }
+        .dot { width: 10px; height: 10px; background: #cbd5e1; border-radius: 50%; display: inline-block; margin: 0 4px; cursor: pointer; }
+        .dot.active { background: #0ea5e9; transform: scale(1.2); }
+
+        /* Tabs */
+        .module-tabs { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 0 12px; }
+        .module-tabs button { border: none; padding: 12px 18px; border-radius: 22px; cursor: pointer; background: #ffffff; color: #0f172a; font-weight: 700; transition: all 0.25s ease; box-shadow: 0 8px 18px rgba(15,23,42,0.08); }
+            .module-tabs button.active { background: linear-gradient(120deg, #0ea5e9, #6366f1); color: white; box-shadow: 0 12px 24px rgba(99,102,241,0.3); }
+
+        /* Modules & lessons */
+        .module { display: none; animation: fade 0.35s ease; }
+        .module.active { display: block; }
+        @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .lesson { background: #ffffff; margin: 18px auto; padding: 20px 20px 16px; width: 90%; max-width: 900px; border-radius: 16px; box-shadow: 0 16px 34px rgba(15,23,42,0.12); border-left: 6px solid #0ea5e9; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .lesson:hover { transform: translateY(-6px); box-shadow: 0 22px 40px rgba(15,23,42,0.18); }
+        .lesson.completed { border-left-color: #22c55e; background: linear-gradient(90deg, #ecfdf3, white); }
+        .lesson h3 { margin: 0 0 10px 0; color: #0f172a; display: flex; align-items: center; gap: 8px; }
+        .badge { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .pending { background: #fef3c7; color: #b45309; }
+        .done { background: #dcfce7; color: #15803d; }
+        .topic-tag { background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 10px; font-size: 11px; }
+        .video-box { margin: 12px 0; border-radius: 14px; overflow: hidden; background: #0f172a; box-shadow: 0 16px 34px rgba(15,23,42,0.2); }
+        .notes { background: #f8fafc; padding: 12px; border-radius: 10px; border-left: 4px solid #0ea5e9; color: #0f172a; }
+        .actions { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .btn { border: none; border-radius: 12px; padding: 10px 16px; cursor: pointer; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(15,23,42,0.16); }
+        .primary { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; }
+        .success { background: linear-gradient(135deg, #16a34a, #22c55e); color: white; }
+        .download { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; }
+
+        /* MCQ & mock */
+        .mcq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; width: 90%; max-width: 980px; margin: 26px auto; }
+        .mock-card, .mcq-card { background: #ffffff; padding: 16px; border-radius: 16px; box-shadow: 0 16px 34px rgba(15,23,42,0.12); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .mock-card:hover, .mcq-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(15,23,42,0.18); }
+        .mcq-card h4, .mock-card h4 { margin: 0 0 8px 0; color: #0f172a; }
+        .mcq-card p, .mock-card p { margin: 0 0 8px 0; color: #475569; font-size: 14px; }
+
+        /* MCQ modal */
+        .mcq-modal { position: fixed; inset: 0; background: rgba(15,23,42,0.55); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 200; }
+        .mcq-panel { background: #ffffff; border-radius: 16px; width: min(900px, 100%); box-shadow: 0 20px 60px rgba(0,0,0,0.16); padding: 18px; border: 1px solid #e5e7eb; position: relative; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; gap: 12px; }
+        .mcq-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .mcq-topic { font-size: 18px; font-weight: 700; color: #0f172a; }
+        .mcq-meta { color: #475569; font-size: 14px; }
+        .mcq-timer { background: #0ea5e9; color: white; padding: 10px 12px; border-radius: 12px; font-weight: 700; min-width: 80px; text-align: center; box-shadow: 0 10px 24px rgba(14,165,233,0.22); }
+        .mcq-body { background: #f8fafc; border-radius: 12px; padding: 14px; border: 1px solid #e2e8f0; flex: 1; overflow-y: auto; }
+        .mcq-question { font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .mcq-options { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+        .mcq-option { border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px 12px; background: white; display: flex; gap: 10px; align-items: center; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+        .mcq-option input { margin: 0; }
+        .mcq-option:hover { border-color: #2563eb; box-shadow: 0 12px 26px rgba(37,99,235,0.12); }
+        .mcq-actions { display: flex; justify-content: flex-end; gap: 10px; align-items: center; }
+        .ghost { background: transparent; border: 1px solid #e5e7eb; color: #0f172a; }
+        .danger { background: linear-gradient(135deg, #f43f5e, #ef4444); color: white; }
+        .mcq-progress { color: #475569; font-size: 14px; }
+        .mcq-result { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; margin-top: 8px; }
+        .mcq-score { display: flex; gap: 12px; flex-wrap: wrap; }
+        .pill { padding: 6px 10px; border-radius: 12px; font-weight: 700; font-size: 13px; }
+        .pill.green { background: #dcfce7; color: #15803d; }
+        .pill.red { background: #fee2e2; color: #b91c1c; }
+        .pill.blue { background: #e0f2fe; color: #0369a1; }
+        .explain { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px; margin-top: 8px; }
+        @media (max-width: 640px){ .mcq-panel { width: 100%; height: 92vh; } }
+
+        /* Dashboard */
+        .dashboard { width: 90%; max-width: 980px; margin: 30px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
+        .dash-item { background: white; padding: 16px; border-radius: 12px; box-shadow: 0 10px 22px rgba(0,0,0,0.08); }
+        .dash-item strong { color: #0ea5e9; }
+
+        /* Back & footer */
+        .back { display: inline-block; margin: 26px 0; padding: 12px 18px; background: #0ea5e9; color: white; border-radius: 10px; }
+        .back:hover { background: #0284c7; }
+        .footer { text-align: center; padding: 18px; background: #0f172a; color: white; margin-top: 30px; }
+
+        /* Mistake Notebook Styles */
+        .mistake-notebook-btn { position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px; border-radius: 50%; border: none; background: linear-gradient(135deg, #f43f5e, #ef4444); color: white; font-size: 24px; cursor: pointer; box-shadow: 0 8px 24px rgba(244,63,94,0.4); z-index: 99; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .mistake-notebook-btn:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(244,63,94,0.5); }
+        .mistake-notebook-btn .badge-count { position: absolute; top: -4px; right: -4px; background: #0f172a; color: white; font-size: 11px; padding: 2px 6px; border-radius: 10px; font-weight: bold; }
+
+        .notebook-modal { position: fixed; inset: 0; background: rgba(15,23,42,0.6); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 250; }
+        .notebook-panel { background: #ffffff; border-radius: 16px; width: min(600px, 95%); max-height: 85vh; box-shadow: 0 20px 60px rgba(0,0,0,0.2); padding: 20px; overflow: hidden; display: flex; flex-direction: column; }
+        .notebook-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .notebook-header h2 { margin: 0; color: #f43f5e; font-size: 1.4em; }
+        .notebook-close { background: none; border: none; font-size: 24px; cursor: pointer; color: #64748b; }
+        .notebook-body { flex: 1; overflow-y: auto; }
+        .mistake-item { background: #fef2f2; border-left: 4px solid #f43f5e; padding: 12px 14px; border-radius: 8px; margin-bottom: 10px; }
+        .mistake-item h4 { margin: 0 0 6px 0; color: #b91c1c; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+        .mistake-item h4 .count { background: #fecaca; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+        .mistake-item p { margin: 0; color: #7f1d1d; font-size: 13px; }
+        .mistake-item .concept-link { color: #2563eb; text-decoration: underline; cursor: pointer; font-size: 12px; margin-top: 6px; display: inline-block; }
+        .empty-notebook { text-align: center; padding: 40px 20px; color: #94a3b8; }
+        .empty-notebook .icon { font-size: 48px; margin-bottom: 10px; }
+        body.dark .notebook-panel { background: #1e293b; }
+        body.dark .mistake-item { background: #3b1c1c; border-left-color: #f87171; }
+        body.dark .mistake-item h4 { color: #fca5a5; }
+        body.dark .mistake-item h4 .count { background: #7f1d1d; color: #fecaca; }
+        body.dark .mistake-item p { color: #fecaca; }
+
+        /* Concept Popup Styles */
+        .concept-popup { position: fixed; inset: 0; background: rgba(15,23,42,0.7); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 300; }
+        .concept-popup-panel { background: linear-gradient(135deg, #fef3c7, #fef9c3); border-radius: 16px; width: min(480px, 92%); padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.25); text-align: center; border: 2px solid #fbbf24; }
+        .concept-popup-panel .emoji { font-size: 48px; margin-bottom: 12px; }
+        .concept-popup-panel h3 { margin: 0 0 8px 0; color: #92400e; font-size: 1.2em; }
+        .concept-popup-panel p { margin: 0 0 16px 0; color: #78350f; font-size: 14px; }
+        .concept-popup-panel .actions { display: flex; gap: 10px; justify-content: center; }
+        .concept-popup-panel .btn-revise { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; padding: 10px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        .concept-popup-panel .btn-later { background: transparent; border: 1px solid #d97706; color: #92400e; padding: 10px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        body.dark .concept-popup-panel { background: linear-gradient(135deg, #422006, #451a03); border-color: #b45309; }
+        body.dark .concept-popup-panel h3 { color: #fcd34d; }
+        body.dark .concept-popup-panel p { color: #fde68a; }
+
+        /* Difficulty Badge */
+        .difficulty-indicator { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; margin-left: 8px; }
+        .difficulty-easy { background: #dcfce7; color: #15803d; }
+        .difficulty-medium { background: #fef3c7; color: #b45309; }
+        .difficulty-hard { background: #fee2e2; color: #b91c1c; }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+
+    <div class="hero">
+        <h1>🏦 Bank Job Preparation</h1>
+        <p>Smart, exam-focused prep for Bangladesh Bank, Sonali, Agrani, Janata, Rupali, Islami Bank, and private banks.</p>
+    </div>
+
+    <div class="search-wrap">
+        <input id="searchBox" class="search-box" type="text" placeholder="🔍 Search lessons, topics, or banks..." onkeyup="searchLessons()">
+    </div>
+
+    <div class="stats">
+        <div class="card"><small>Total Lessons</small><h3 id="totalLessons">25</h3></div>
+        <div class="card"><small>Completed</small><h3 id="completedLessons">0</h3></div>
+        <div class="card"><small>Progress</small><h3 id="progressPercent">0%</h3></div>
+        <div class="card"><small>Weak Areas</small><h3 id="weakAreas">—</h3></div>
+    </div>
+
+    <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-bar" id="progressBar">0%</div></div>
+    </div>
+
+    <div class="carousel">
+        <h2>🔥 Focus Tracks</h2>
+        <button class="c-btn prev" onclick="moveSlide(-1)">❮</button>
+        <div class="carousel-window">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="slide">
+                    <div class="icon" style="background: linear-gradient(135deg,#0ea5e9,#2563eb);">📊</div>
+                    <h3>বাংলা ব্যাকরণ</h3>
+                    <p>বাক্য প্রকরণ, সন্ধি, সমাস, কারক, প্রকৃতি-প্রত্যয় ইত্যাদি।</p>
+                </div>
+                <div class="slide">
+                    <div class="icon" style="background: linear-gradient(135deg,#22c55e,#16a34a);">🧠</div>
+                    <h3>Reasoning Power</h3>
+                    <p>Series, Seating, Blood Relations, Coding-Decoding mini-sprints.</p>
+                </div>
+                <div class="slide">
+                    <div class="icon" style="background: linear-gradient(135deg,#f97316,#ea580c);">💻</div>
+                    <h3>Computer Essentials</h3>
+                    <p>MS Office tricks, networking basics, exam-shortcut notes.</p>
+                </div>
+                <div class="slide">
+                    <div class="icon" style="background: linear-gradient(135deg,#a855f7,#7c3aed);">🇧🇩</div>
+                    <h3>Banking Awareness</h3>
+                    <p>Bangladesh economy, BB functions, latest financial news.</p>
+                </div>
+            </div>
+        </div>
+        <button class="c-btn next" onclick="moveSlide(1)">❯</button>
+        <div class="dots" id="carouselDots">
+            <span class="dot active" onclick="goSlide(0)"></span><span class="dot" onclick="goSlide(1)"></span><span class="dot" onclick="goSlide(2)"></span><span class="dot" onclick="goSlide(3)"></span>
+        </div>
+    </div>
+
+    <div class="module-tabs">
+        <button class="active" onclick="showModule('quant', this)">� বাংলা ব্যাকরণ</button>
+        <button onclick="showModule('reasoning', this)">🧠 Reasoning Ability</button>
+        <button onclick="showModule('computer', this)">💻 Computer Knowledge</button>
+        <button onclick="showModule('english', this)">📖 English</button>
+        <button onclick="showModule('gk', this)">🇧🇩 Banking Awareness</button>
+    </div>
+
+    <div class="module active" id="quant">
+        <div class="lesson" id="lesson-number-system">
+            <h3>বাক্য ও বাক্য প্রকরণ <span class="badge pending" id="badge-lesson-number-system">Pending</span> <span class="topic-tag">Bangladesh Bank</span></h3>
+            
+            <!-- Video 1 -->
+            <p style="font-weight: bold; color: #0ea5e9; margin: 10px 0 5px 0;">📹 Video 1</p>
+            <div class="video-box">
+                <iframe 
+                    src="https://www.youtube.com/embed/rItfWrsNreo?enablejsapi=1&rel=0&fs=1&playsinline=0"
+                    width="100%" 
+                    height="400"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="notes">বাক্যের গঠন, প্রকারভেদ এবং বাক্য প্রকরণের বিস্তারিত আলোচনা।</div>
+            <div class="actions">
+                <a class="btn download" href="file:///E:/BANK%20JOB%20PREP/Bangla%20Grammar%2001/Pdf/Bangla_Grammar_Lecture_10_%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%AF_%E0%A6%93_%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%AF_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%95%E0%A6%B0%E0%A6%A3_compressed_1.pdf" download>📥 PDF নোটস</a>
+                <button class="btn primary" onclick="startMCQ('বাক্য ও বাক্য প্রকরণ',20)">▶ MCQ (20)</button>
+                <button class="btn success" onclick="markComplete('lesson-number-system')">✔ Mark Done</button>
+            </div>
+            
+            <!-- Video 2 -->
+            <p style="font-weight: bold; color: #0ea5e9; margin: 16px 0 5px 0;">📹 শব্দের শ্রেণিবিভাগ</p>
+            <div class="video-box">
+                <iframe 
+                    src="https://www.youtube.com/embed/vmCo_dvxrGQ?si=s5W7YrWuloFV7w_t&enablejsapi=1&rel=0&fs=1"
+                    width="100%" 
+                    height="400"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="notes">শব্দের শ্রেণিবিভাগ: গঠন অনুসারে (মৌলিক ও সাধিত), অর্থ অনুসারে (যৌগিক, রূঢ়ি ও যোগরূঢ়), উৎপত্তি অনুসারে (তৎসম, অর্ধতৎসম, তদ্ভব, দেশি, বিদেশি)।</div>
+            <div class="actions">
+                <a class="btn download" href="file:///E:/BANK%20JOB%20PREP/Bangla%20Grammar%2001/Pdf/%E0%A6%B6%E0%A6%AC%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B0_%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A3%E0%A6%BF%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A6%BE%E0%A6%97_%E0%A7%A6%E0%A7%A7_edited_Copy.pdf" download>📥 PDF নোটস</a>
+                <button class="btn primary" onclick="startMCQ('শব্দের শ্রেণিবিভাগ',20)">▶ MCQ (20)</button>
+                <button class="btn success" onclick="markComplete('lesson-number-system')">✔ Mark Done</button>
+            </div>
+
+            <!-- Video 3 -->
+            <p style="font-weight: bold; color: #0ea5e9; margin: 16px 0 5px 0;">📹 ধ্বনি ও বর্ণ</p>
+            <div class="video-box">
+                <iframe 
+                    src="https://www.youtube.com/embed/ub19iT6KvZw?si=EIZNYixTUNzSHPCo&enablejsapi=1&rel=0&fs=1"
+                    width="100%" 
+                    height="400"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="notes">ধ্বনি ও বর্ণ— ভাষার ক্ষুদ্রতম একক, বর্ণমালা, স্বর-ব্যঞ্জন ও উচ্চারণভিত্তিক শ্রেণিবিভাগ।</div>
+            <div class="actions">
+                <a class="btn download" href="file:///E:/BANK%20JOB%20PREP/Bangla%20Grammar%2001/Pdf/Bangla_Grammar_Lecture_3_%E0%A6%A7%E0%A7%8D%E0%A6%AC%E0%A6%A8%E0%A6%BF_%E0%A6%93_%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A3_compressed.pdf" download>📥 PDF নোটস</a>
+                <button class="btn primary" onclick="startMCQ('ধ্বনি ও বর্ণ',40)">▶ MCQ (40)</button>
+                <button class="btn success" onclick="markComplete('lesson-number-system')">✔ Mark Done</button>
+            </div>
+
+            <!-- Video 4 -->
+            <p style="font-weight: bold; color: #0ea5e9; margin: 16px 0 5px 0;">📹 সন্ধি</p>
+            <div class="video-box">
+                <iframe 
+                    src="https://www.youtube.com/embed/e9J1Z4TpvLo?si=fklr-18ItmLDjsVk&enablejsapi=1&rel=0&fs=1"
+                    width="100%" 
+                    height="400"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="notes">সন্ধি— সংযোগ ও রূপান্তরের নিয়মাবলি।</div>
+            <div class="actions">
+                <a class="btn download" href="file:///E:/BANK%20JOB%20PREP/Bangla%20Grammar%2001/Pdf/Bangla%20Grammar%20Lecture-4%20%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A6%BF.pdf" download>📥 PDF নোটস</a>
+                <button class="btn primary" onclick="startMCQ('সন্ধি',40)">▶ MCQ (40)</button>
+                <button class="btn success" onclick="markComplete('lesson-number-system')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-percentage">
+            <h3>Percentage <span class="badge pending" id="badge-lesson-percentage">Pending</span> <span class="topic-tag">Sonali / Agrani</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-quant-percentage.mp4" type="video/mp4"></video></div>
+            <div class="notes">Percent to fraction, successive %, bank-style word problems.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/percentage.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Percentage',20)">▶ MCQ (20)</button>
+                <button class="btn success" onclick="markComplete('lesson-percentage')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-ratio">
+            <h3>Ratio & Proportion <span class="badge pending" id="badge-lesson-ratio">Pending</span> <span class="topic-tag">Private Banks</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-quant-ratio.mp4" type="video/mp4"></video></div>
+            <div class="notes">Partnership, mixtures, direct & inverse proportion shortcuts.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/ratio.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Ratio',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-ratio')">✔ Mark Done</button>
+            </div>
+        </div>
+            <div class="lesson" id="lesson-profit-loss">
+                <h3>Profit & Loss <span class="badge pending" id="badge-lesson-profit-loss">Pending</span></h3>
+                <div class="video-box"><video width="100%" controls><source src="videos/bank-quant-profit.mp4" type="video/mp4"></video></div>
+                <div class="notes">Cost price, selling price, discount, marked price, successive profit/loss.</div>
+                <div class="actions">
+                    <a class="btn download" href="notes/profit-loss.pdf" download>📥 Notes</a>
+                    <button class="btn primary" onclick="startMCQ('Profit & Loss',20)">▶ MCQ (20)</button>
+                    <button class="btn success" onclick="markComplete('lesson-profit-loss')">✔ Mark Done</button>
+                </div>
+            </div>
+                <div class="lesson" id="lesson-internet-email">
+                    <h3>Internet & Email <span class="badge pending" id="badge-lesson-internet-email">Pending</span></h3>
+                    <div class="video-box"><video width="100%" controls><source src="videos/bank-computer-email.mp4" type="video/mp4"></video></div>
+                    <div class="notes">Browsers, search tricks, email etiquette, phishing awareness.</div>
+                    <div class="actions">
+                        <a class="btn download" href="notes/internet-email.pdf" download>📥 Notes</a>
+                        <button class="btn primary" onclick="startMCQ('Internet & Email',10)">▶ MCQ (10)</button>
+                        <button class="btn success" onclick="markComplete('lesson-internet-email')">✔ Mark Done</button>
+                    </div>
+                </div>
+                <div class="lesson" id="lesson-hardware-software">
+                    <h3>Hardware & Software <span class="badge pending" id="badge-lesson-hardware-software">Pending</span></h3>
+                    <div class="video-box"><video width="100%" controls><source src="videos/bank-computer-hardware.mp4" type="video/mp4"></video></div>
+                    <div class="notes">Input/output devices, OS types, application vs system software.</div>
+                    <div class="actions">
+                        <a class="btn download" href="notes/hardware-software.pdf" download>📥 Notes</a>
+                        <button class="btn primary" onclick="startMCQ('Hardware & Software',10)">▶ MCQ (10)</button>
+                        <button class="btn success" onclick="markComplete('lesson-hardware-software')">✔ Mark Done</button>
+                    </div>
+                </div>
+            <div class="lesson" id="lesson-time-work">
+                <h3>Time & Work <span class="badge pending" id="badge-lesson-time-work">Pending</span></h3>
+                <div class="video-box"><video width="100%" controls><source src="videos/bank-quant-timework.mp4" type="video/mp4"></video></div>
+                <div class="notes">Work rates, combined work, pipes & cisterns, efficiency comparisons.</div>
+                <div class="actions">
+                    <a class="btn download" href="notes/time-work.pdf" download>📥 Notes</a>
+                    <button class="btn primary" onclick="startMCQ('Time & Work',20)">▶ MCQ (20)</button>
+                    <button class="btn success" onclick="markComplete('lesson-time-work')">✔ Mark Done</button>
+                </div>
+            </div>
+            <div class="lesson" id="lesson-speed-distance">
+                <h3>Speed, Time & Distance <span class="badge pending" id="badge-lesson-speed-distance">Pending</span></h3>
+                <div class="video-box"><video width="100%" controls><source src="videos/bank-quant-speed.mp4" type="video/mp4"></video></div>
+                <div class="notes">Relative speed, trains, boats-stream, average speed pitfalls.</div>
+                <div class="actions">
+                    <a class="btn download" href="notes/speed-distance.pdf" download>📥 Notes</a>
+                    <button class="btn primary" onclick="startMCQ('Speed Time Distance',20)">▶ MCQ (20)</button>
+                    <button class="btn success" onclick="markComplete('lesson-speed-distance')">✔ Mark Done</button>
+                </div>
+            </div>
+    </div>
+
+    <div class="module" id="reasoning">
+        <div class="lesson" id="lesson-series">
+            <h3>Series <span class="badge pending" id="badge-lesson-series">Pending</span> <span class="topic-tag">Bangladesh Bank</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-reasoning-series.mp4" type="video/mp4"></video></div>
+            <div class="notes">Number, letter, and mixed series with fast pattern spotting.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/series.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Series',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-series')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-analogy">
+            <h3>Analogy <span class="badge pending" id="badge-lesson-analogy">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-reasoning-analogy.mp4" type="video/mp4"></video></div>
+            <div class="notes">Word, number, and figure analogies; relation mapping.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/analogy.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Analogy',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-analogy')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-comprehension">
+            <h3>Comprehension <span class="badge pending" id="badge-lesson-comprehension">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-english-comprehension.mp4" type="video/mp4"></video></div>
+            <div class="notes">Reading speed, main idea, inference, tone, fact vs opinion.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/comprehension.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Comprehension',10)">▶ MCQ (10)</button>
+                <button class="btn success" onclick="markComplete('lesson-comprehension')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-error-detection">
+            <h3>Error Detection <span class="badge pending" id="badge-lesson-error-detection">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-english-error.mp4" type="video/mp4"></video></div>
+            <div class="notes">Spotting grammar slips, misplaced modifiers, agreement issues.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/error-detection.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Error Detection',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-error-detection')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-blood">
+            <h3>Blood Relations <span class="badge pending" id="badge-lesson-blood">Pending</span> <span class="topic-tag">Islami Bank</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-reasoning-blood.mp4" type="video/mp4"></video></div>
+            <div class="notes">Family trees, generations, quick diagramming.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/blood-relations.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Blood Relations',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-blood')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-coding">
+            <h3>Coding-Decoding <span class="badge pending" id="badge-lesson-coding">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-reasoning-coding.mp4" type="video/mp4"></video></div>
+            <div class="notes">Letter shifting, symbol patterns, conditional coding.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/coding-decoding.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Coding-Decoding',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-coding')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-direction">
+            <h3>Direction Sense <span class="badge pending" id="badge-lesson-direction">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-reasoning-direction.mp4" type="video/mp4"></video></div>
+            <div class="notes">Compass basics, turns, distance tracking, shortest path.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/direction.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Direction Sense',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-direction')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-seating">
+            <h3>Seating Arrangement <span class="badge pending" id="badge-lesson-seating">Pending</span> <span class="topic-tag">Agrani / Janata</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-reasoning-seating.mp4" type="video/mp4"></video></div>
+            <div class="notes">Linear, circular, complex constraints with speed layouts.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/seating.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Seating Arrangement',20)">▶ MCQ (20)</button>
+                <button class="btn success" onclick="markComplete('lesson-seating')">✔ Mark Done</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="module" id="computer">
+        <div class="lesson" id="lesson-ms-office">
+            <h3>MS Office Essentials <span class="badge pending" id="badge-lesson-ms-office">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-computer-office.mp4" type="video/mp4"></video></div>
+            <div class="notes">Word shortcuts, Excel formulas, PowerPoint tips for exams.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/ms-office.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('MS Office',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-ms-office')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-internet-email">
+            <h3>Internet & Email <span class="badge pending" id="badge-lesson-internet-email">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-computer-email.mp4" type="video/mp4"></video></div>
+            <div class="notes">Browsers, search tricks, email etiquette, phishing awareness.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/internet-email.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Internet & Email',10)">▶ MCQ (10)</button>
+                <button class="btn success" onclick="markComplete('lesson-internet-email')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-hardware-software">
+            <h3>Hardware & Software <span class="badge pending" id="badge-lesson-hardware-software">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-computer-hardware.mp4" type="video/mp4"></video></div>
+            <div class="notes">Input/output devices, OS types, application vs system software.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/hardware-software.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Hardware & Software',10)">▶ MCQ (10)</button>
+                <button class="btn success" onclick="markComplete('lesson-hardware-software')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-networking">
+            <h3>Networking Basics <span class="badge pending" id="badge-lesson-networking">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-computer-networking.mp4" type="video/mp4"></video></div>
+            <div class="notes">LAN/WAN, IP, common protocols, email security basics.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/networking.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Networking',10)">▶ MCQ (10)</button>
+                <button class="btn success" onclick="markComplete('lesson-networking')">✔ Mark Done</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="module" id="english">
+        <div class="lesson" id="lesson-vocab">
+            <h3>Vocabulary <span class="badge pending" id="badge-lesson-vocab">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-english-vocab.mp4" type="video/mp4"></video></div>
+            <div class="notes">High-frequency words, synonyms/antonyms, usage tips.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/vocab.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Vocabulary',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-vocab')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-grammar">
+            <h3>Grammar <span class="badge pending" id="badge-lesson-grammar">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-english-grammar.mp4" type="video/mp4"></video></div>
+            <div class="notes">Tense, subject-verb agreement, prepositions, connectors.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/grammar.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Grammar',20)">▶ MCQ (20)</button>
+                <button class="btn success" onclick="markComplete('lesson-grammar')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-comprehension">
+            <h3>Comprehension <span class="badge pending" id="badge-lesson-comprehension">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-english-comprehension.mp4" type="video/mp4"></video></div>
+            <div class="notes">Reading speed, main idea, inference, tone, fact vs opinion.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/comprehension.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Comprehension',10)">▶ MCQ (10)</button>
+                <button class="btn success" onclick="markComplete('lesson-comprehension')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-error-detection">
+            <h3>Error Detection <span class="badge pending" id="badge-lesson-error-detection">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-english-error.mp4" type="video/mp4"></video></div>
+            <div class="notes">Spotting grammar slips, misplaced modifiers, agreement issues.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/error-detection.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Error Detection',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-error-detection')">✔ Mark Done</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="module" id="gk">
+        <div class="lesson" id="lesson-banking-awareness">
+            <h3>Banking Awareness <span class="badge pending" id="badge-lesson-banking-awareness">Pending</span> <span class="topic-tag">Bangladesh Bank</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-awareness.mp4" type="video/mp4"></video></div>
+            <div class="notes">Banking terms, KYC, CRR/SLR, monetary policy tools.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/banking-awareness.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Banking Awareness',20)">▶ MCQ (20)</button>
+                <button class="btn success" onclick="markComplete('lesson-banking-awareness')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-central-bank">
+            <h3>Central Bank Functions <span class="badge pending" id="badge-lesson-central-bank">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-central-functions.mp4" type="video/mp4"></video></div>
+            <div class="notes">BB roles: regulation, currency issue, reserves, lender of last resort.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/central-bank.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Central Bank Functions',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-central-bank')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-economy">
+            <h3>Bangladesh Economy <span class="badge pending" id="badge-lesson-economy">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-economy.mp4" type="video/mp4"></video></div>
+            <div class="notes">GDP, sectors, remittance, inflation trends, key budget facts.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/bd-economy.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Bangladesh Economy',15)">▶ MCQ (15)</button>
+                <button class="btn success" onclick="markComplete('lesson-economy')">✔ Mark Done</button>
+            </div>
+        </div>
+        <div class="lesson" id="lesson-financial-news">
+            <h3>Financial News <span class="badge pending" id="badge-lesson-financial-news">Pending</span></h3>
+            <div class="video-box"><video width="100%" controls><source src="videos/bank-financial-news.mp4" type="video/mp4"></video></div>
+            <div class="notes">Recent banking/finance headlines, policy moves, key reports.</div>
+            <div class="actions">
+                <a class="btn download" href="notes/financial-news.pdf" download>📥 Notes</a>
+                <button class="btn primary" onclick="startMCQ('Financial News',10)">▶ MCQ (10)</button>
+                <button class="btn success" onclick="markComplete('lesson-financial-news')">✔ Mark Done</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mcq-grid">
+        <div class="mcq-card">
+            <h4>Topic MCQs</h4>
+            <p>Timed sets (10-20 questions) per topic with instant result.</p>
+            <button class="btn primary" onclick="startMCQ('Quick Mix',10)">Start 10 Q</button>
+        </div>
+        <div class="mcq-card">
+            <h4>Weak Area Drill</h4>
+            <p>Auto-picks topics you miss often to boost accuracy.</p>
+            <button class="btn success" onclick="simulateWeakArea()">Fix Weak Areas</button>
+        </div>
+        <div class="mock-card">
+            <h4>Full Mock Test</h4>
+            <p>100 Q · 70 min · Mixed sections like real bank exams.</p>
+            <button class="btn primary" onclick="startMock()">Start Mock</button>
+        </div>
+        <div class="mock-card">
+            <h4>Section Analysis</h4>
+            <p>Section-wise score and time spent after each mock.</p>
+            <button class="btn download" onclick="showAnalysis()">View Demo</button>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="dash-item"><strong>Courses Enrolled:</strong><br> Bank Core Prep</div>
+        <div class="dash-item"><strong>Lessons Completed:</strong> <span id="dashLessons">0</span></div>
+        <div class="dash-item"><strong>Practice Accuracy:</strong> <span id="dashAccuracy">—</span></div>
+        <div class="dash-item"><strong>Weak Topics:</strong> <span id="dashWeak">—</span></div>
+        <div class="dash-item"><strong>Recommended Next:</strong> <span id="dashNext">Percentage MCQ</span></div>
+    </div>
+
+    <div class="mcq-modal" id="mcqModal" role="dialog" aria-modal="true">
+        <div class="mcq-panel">
+            <div class="mcq-header">
+                <div>
+                    <div class="mcq-topic" id="mcqTopic">Topic</div>
+                    <div class="mcq-meta" id="mcqMeta">Question 1 of 10</div>
+                </div>
+                <div class="mcq-timer" id="mcqTimer">00:00</div>
+            </div>
+            <div class="mcq-body" id="mcqBody"></div>
+            <div class="mcq-actions">
+                <button class="btn ghost" onclick="closeMCQ()">Cancel</button>
+                <button class="btn primary" id="mcqNextBtn" onclick="nextMCQ()">Next</button>
+                <button class="btn success" id="mcqSubmitBtn" onclick="submitMCQ()">Submit</button>
+            </div>
+            <div class="mcq-progress" id="mcqProgress">Progress</div>
+        </div>
+    </div>
+
+    <div style="text-align:center;"><a class="back" href="index.html">⬅ Back to Home</a></div>
+
+    <!-- Mistake Notebook Floating Button -->
+    <button class="mistake-notebook-btn" onclick="openMistakeNotebook()" title="Mistake Notebook">
+        📓
+        <span class="badge-count" id="mistakeCount">0</span>
+    </button>
+
+    <!-- Mistake Notebook Modal -->
+    <div class="notebook-modal" id="notebookModal">
+        <div class="notebook-panel">
+            <div class="notebook-header">
+                <h2>📓 Your Mistake Notebook</h2>
+                <button class="notebook-close" onclick="closeNotebook()">×</button>
+            </div>
+            <div class="notebook-body" id="notebookBody">
+                <!-- Populated by JS -->
+            </div>
+            <div style="margin-top: 12px; text-align: center;">
+                <button class="btn danger" onclick="clearMistakeNotebook()" style="font-size: 13px;">🗑️ Clear All Mistakes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Concept Revision Popup -->
+    <div class="concept-popup" id="conceptPopup">
+        <div class="concept-popup-panel">
+            <div class="emoji">🔔</div>
+            <h3 id="conceptTitle">You're repeatedly missing this concept!</h3>
+            <p id="conceptMessage">"বাহুল্য দোষ" — Revise this concept now?</p>
+            <div class="actions">
+                <button class="btn-revise" onclick="reviseNow()">📖 Revise Now</button>
+                <button class="btn-later" onclick="closeConceptPopup()">Later</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Bank Job Prep | Practice • Analyze • Improve</div>
+
+    <script>
+        const lessons = [
+            'lesson-number-system','lesson-percentage','lesson-ratio','lesson-profit-loss','lesson-si-ci','lesson-time-work','lesson-speed-distance',
+            'lesson-series','lesson-analogy','lesson-blood','lesson-coding','lesson-direction','lesson-seating',
+            'lesson-ms-office','lesson-internet-email','lesson-hardware-software','lesson-networking',
+            'lesson-vocab','lesson-grammar','lesson-comprehension','lesson-error-detection',
+            'lesson-banking-awareness','lesson-central-bank','lesson-economy','lesson-financial-news'
+        ];
+
+        const questionBank = {
+            'বাক্য ও বাক্য প্রকরণ': [
+                // ===== EXPERT QUESTIONS (15) - Priority Set =====
+                { q: '"আমাকে একটি কলম দাও।" — কোন ধরনের বাক্যের উদাহরণ?', options: ['আকাঙ্ক্ষক বাক্য', 'প্রশ্নবোধক বাক্য', 'বিস্ময়সূচক বাক্য', 'আদেশসূচক বাক্য'], answer: 3, explain: 'এটি অনুরোধ/আদেশ প্রকাশ করছে, তাই আদেশসূচক বাক্য।' },
+                { q: 'কোন বাক্যটি অশুদ্ধ?', options: ['সম্প্রীতি কেবলমাত্র জাতিতে নয়, মানব সমাজে দেখা দিয়েছে।', 'তৎকালে বাঙালি ব্রিটিশদের অধীন ছিল।', 'অধ্যাপক সাহেব পরিদর্শনে কক্সবাজারে বেড়াতে গেছেন।', 'জাতির প্রেসক্লাবে তিনি এক সাংবাদিক সম্মেলনে বক্তব্য করেন।'], answer: 0, explain: '"কেবলমাত্র" শব্দটি বাহুল্য দোষযুক্ত। শুধু "কেবল" বা "মাত্র" ব্যবহার করা উচিত।' },
+                { q: 'মিশ্র বাক্যের উদাহরণ কোনটি?', options: ['এতক্ষণ অপেক্ষা করলাম কিন্তু গাড়ি পেলাম না।', 'ছেলেটি গরিব অথচ মেধাবী।', 'তার টাকা আছে কিন্তু তিনি দান করেন না।', 'যখন বিপদ আসে, তখন দৃঢ়তা আসে।'], answer: 3, explain: 'মিশ্র/জটিল বাক্যে একটি প্রধান খণ্ডবাক্য ও এক বা একাধিক অধীন খণ্ডবাক্য থাকে। "যখন...তখন" এই গঠন জটিল বাক্যের।' },
+                { q: '"সূর্যোদয়ের সময় পদ্মফুল ফোটে।" — বাক্যটির জটিল রূপ কী হবে?', options: ['যখন সূর্য উদিত হয়, তখন পদ্মফুল ফোটে।', 'সূর্য ওঠে এবং পদ্মফুল ফোটে।', 'পদ্মফুল ফোটে কারণ সূর্য ওঠে।', 'সূর্যোদয়ের সময় পদ্মফুল ফোটে।'], answer: 0, explain: 'জটিল বাক্যে "যখন...তখন" সাপেক্ষ সর্বনাম ব্যবহার করে সময়ের সম্পর্ক দেখানো হয়।' },
+                { q: '"দশ মিনিট পর ট্রেন এলো।" — বাক্যটির যৌগিক রূপ কোনটি?', options: ['দশ মিনিট অপেক্ষা করলাম, তাই ট্রেন এলো।', 'দশ মিনিট অপেক্ষা হলো, তারপর ট্রেন এলো।', 'দশ মিনিট অপেক্ষা করলাম বলে ট্রেন এলো।', 'দশ মিনিট কেটে গেলো তখন ট্রেন এলো।'], answer: 1, explain: 'যৌগিক বাক্যে "তারপর" সংযোজক অব্যয় দিয়ে দুটি স্বাধীন বাক্য যুক্ত হয়।' },
+                { q: 'কোনটি শুদ্ধ বাক্য?', options: ['বেগম রোকেয়ার মতো বিদুষী নারী একালেও বিরল।', 'গতকালের সভায় সকল সদস্য উপস্থিত ছিলেন।', 'অন্যান্য বিষয়গুলোর আলোচনা পরে হবে।', 'নতুন নতুন ছেলেগুলো কলেজে বড় উৎপাতে করছে।'], answer: 1, explain: 'অন্যান্য বিষয়গুলো = বাহুল্য, নতুন নতুন ছেলেগুলো = অশুদ্ধ। "গতকালের সভায়..." সঠিক।' },
+                { q: 'শুদ্ধ বাক্য কোনটি?', options: ['প্রতিযোগিতায় অংশগ্রহণ করাই বড় কথা।', 'হতাশা অপরিসীম স্কুল।', 'কলাগাছ বিস্ফোরণ করি।', 'শান্তিপূর্ণ কি আসে নাই?'], answer: 0, explain: '"প্রতিযোগিতায় অংশগ্রহণ করাই বড় কথা" বাক্যটি সঠিক অর্থ ও গঠন বহন করে।' },
+                { q: 'নিচের কোনটি জটিল বাক্যের উদাহরণ?', options: ['উদ্যোগ পরিশ্রম কর, তবেই অন্যায় দারিদ্র্য হবে না।', 'যে সকল পশু মাংস ভোজন করে, তারা অত্যন্ত বলবান।', 'পুরস্কার পদ্মফুল জন্মে।', 'আমি বহু কষ্ট করেছি, ফলে শিক্ষা লাভ করেছি।'], answer: 1, explain: '"যে...তারা" সাপেক্ষ সর্বনাম দিয়ে জটিল বাক্য গঠিত।' },
+                { q: 'নিচের কোনটি শুদ্ধভাবে যৌগিক?', options: ['শব্দকোষ', 'মুদ্রাদাহ', 'শব্দধাতু', 'গরুর প্যাকেট'], answer: 2, explain: 'শব্দধাতু সঠিকভাবে যৌগিক শব্দ গঠন করে।' },
+                { q: 'কোনটি সরল বাক্য?', options: ['ধনের ধর্মই অসাম্য', 'যে রক্ষক সেই ভক্ষক', 'তার বয়স হয়েছে কিন্তু বুদ্ধি হয়নি', 'তিনি দরিদ্র কিন্তু চরিত্রবান নন'], answer: 0, explain: 'সরল বাক্যে একটিমাত্র সমাপিকা ক্রিয়া থাকে। "ধনের ধর্মই অসাম্য" সরল বাক্য।' },
+                { q: '"তুমি আমার সাথে প্রতারণা করেছো।" — বাক্যটি কোন কারণে যোগ্যতা হারিয়েছে?', options: ['উপসর্গের ভুল প্রয়োগ', 'বাক্যধারার শব্দ পরিবর্তন', 'দুর্বোধ্যতা', 'শব্দগত দোষ'], answer: 2, explain: 'বাক্যটি অস্পষ্ট এবং দুর্বোধ্য, তাই যোগ্যতা হারিয়েছে।' },
+                { q: '"আত্মীয়" শব্দের অর্থ কী?', options: ['যোগাযোগ', 'মিলন', 'যোগসূত্র', 'খ ও গ উভয়ই'], answer: 1, explain: 'আত্মীয় শব্দের অর্থ মিলন বা সম্পর্কযুক্ত।' },
+                { q: 'নিচের কোন বাক্যে আসক্তি লোপ পেয়েছে?', options: ['এখানে খাঁটি গরুর দুধ পাওয়া যায়', 'প্রিয় বাল্য হতেই কাকা তিনি', 'তৎ ভাবে নুন জোটে না গাঁথা ভাবে ঘি', 'বুকে জ্বালা, ব্যথা তেতুল'], answer: 1, explain: 'এই বাক্যে আকাঙ্ক্ষা/আসক্তি সঠিকভাবে প্রকাশিত হয়নি।' },
+                { q: 'একটি আদর্শ বাক্যে কয়টি গুণ থাকা আবশ্যক?', options: ['২', '৩', '৪', '৫'], answer: 1, explain: 'আদর্শ বাক্যের তিনটি গুণ: আকাঙ্ক্ষা, আসক্তি ও যোগ্যতা।' },
+                { q: '"তুমি চেষ্টা না করায় ব্যর্থ হয়েছ।" — বাক্যটিকে জটিল বাক্যে রূপান্তর করলে হবে:', options: ['তুমি চেষ্টা করনি এবং ব্যর্থ হয়েছ', 'তুমি চেষ্টা করে ব্যর্থ হয়েছ', 'যেহেতু তুমি চেষ্টা করোনি, তাই ব্যর্থ হয়েছ', 'তুমি চেষ্টা করিনি বলে ব্যর্থ হয়েছ'], answer: 2, explain: '"যেহেতু...তাই" কারণ-ফল সম্পর্ক দেখায় জটিল বাক্যে।' },
+                
+                // ===== EXPERT QUESTIONS SET 2 (15) =====
+                { q: 'নিচের কোন বাক্যে "বাহুল্য দোষ" রয়েছে?', options: ['সে নিজে নিজেই কাজটি করেছে।', 'সে কাজটি করেছে।', 'সে নিজে কাজটি করেছে।', 'সে একাই কাজটি করেছে।'], answer: 0, explain: '"নিজে" ও "নিজেই" একই অর্থ প্রকাশ করে, একসাথে বসলে বাহুল্য হয়।' },
+                { q: '"সে আমাকে নিজ চোখে দেখেছে"— বাক্যটি কোন দোষে দুষ্ট?', options: ['বাহুল্য দোষ', 'আসত্তিহীনতা', 'দুর্বোধ্যতা', 'গুরুচণ্ডালী'], answer: 0, explain: '"নিজ চোখে" বললেই যথেষ্ট, এখানে বাহুল্য হয়েছে।' },
+                { q: '"যে পরিশ্রম করে, সে সফল হয়"— বাক্যটির সরল রূপ কোনটি?', options: ['পরিশ্রম করলে সফল হওয়া যায়।', 'পরিশ্রমী মানুষ সফল হয়।', 'যে পরিশ্রম করে সে-ই সফল হয়।', 'পরিশ্রম এবং সাফল্য একসাথে চলে।'], answer: 1, explain: 'উপবাক্য বাদ দিয়ে একটি কর্তা ও একটি বিধেয় থাকায় এটি সরল রূপ।' },
+                { q: '"সে অসুস্থ অথচ কাজে এসেছে"— এটি কোন ধরনের বাক্য?', options: ['সরল', 'জটিল', 'যৌগিক', 'অনুজ্ঞাসূচক'], answer: 2, explain: '"অথচ" দ্বারা দুটি স্বাধীন বাক্য যুক্ত হয়েছে— যৌগিক বাক্য।' },
+                { q: 'নিচের কোনটি শুদ্ধ বাক্য?', options: ['সে আমার অপেক্ষা বেশি যোগ্য।', 'সে আমার চেয়ে বেশি যোগ্য।', 'সে আমার হতে বেশি যোগ্য।', 'সে আমার অপেক্ষায় বেশি যোগ্য।'], answer: 1, explain: 'তুলনায় "চেয়ে" সঠিক প্রয়োগ।' },
+                { q: '"তুমি ডাক দিলে আমি আসতাম"— বাক্যটি কোন প্রকার?', options: ['সরল', 'যৌগিক', 'জটিল', 'অনুজ্ঞাসূচক'], answer: 2, explain: 'শর্তসূচক উপবাক্য রয়েছে— এটি জটিল বাক্য।' },
+                { q: '"সে একাকী একা বাস করে"— বাক্যটি কোন দোষে দুষ্ট?', options: ['বাহুল্য', 'দুর্বোধ্যতা', 'আসত্তিহীনতা', 'গুরুচণ্ডালী'], answer: 0, explain: '"একাকী" ও "একা" একই অর্থে ব্যবহৃত— বাহুল্য দোষ।' },
+                { q: '"সূর্য উঠলে পাখিরা গান গায়"— বাক্যটির জটিল রূপ কোনটি?', options: ['যখন সূর্য ওঠে, তখন পাখিরা গান গায়।', 'সূর্য ওঠে এবং পাখিরা গান গায়।', 'সূর্যের কারণে পাখিরা গান গায়।', 'সূর্য উঠেছে তাই পাখিরা গান গায়।'], answer: 0, explain: '"যখন… তখন…" দ্বারা শর্তযুক্ত উপবাক্য— জটিল রূপ।' },
+                { q: '"চুপ করো, নইলে বিপদ হবে"— বাক্যটি কী অর্থ প্রকাশ করে?', options: ['অনুরোধ', 'আদেশ', 'সতর্কতা', 'অনুজ্ঞা'], answer: 3, explain: 'নির্দেশ ও পরিণতি বোঝানো হয়েছে— অনুজ্ঞাসূচক।' },
+                { q: 'নিচের কোনটি বাহুল্য দোষমুক্ত?', options: ['সে নিজ হাতে নিজেই কাজটি করেছে।', 'সে নিজ হাতে কাজটি করেছে।', 'সে নিজের হাতে নিজে কাজটি করেছে।', 'সে নিজেই নিজের হাতে কাজটি করেছে।'], answer: 1, explain: 'অপ্রয়োজনীয় পুনরুক্তি নেই।' },
+                { q: '"বৃষ্টি এবং ঝড় একসাথে এল"— এটি কোন ধরনের বাক্য?', options: ['সরল', 'জটিল', 'যৌগিক', 'মিশ্র'], answer: 2, explain: 'দুটি সমমানের বাক্য "এবং" দ্বারা যুক্ত— যৌগিক বাক্য।' },
+                { q: '"যাঁরা পরিশ্রমী, তাঁরা সফল"— এটি একটি:', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'অনুজ্ঞাসূচক'], answer: 1, explain: 'আপেক্ষিক সর্বনামযুক্ত উপবাক্য থাকায় এটি জটিল বাক্য।' },
+                { q: '"অত্যধিক" শব্দের সঠিক প্রয়োগ কোন বাক্যে?', options: ['অত্যাধিক বৃষ্টি হয়েছে।', 'অত্যধিক পরিশ্রম স্বাস্থ্যের ক্ষতি করে।', 'অতিরিক্তি কাজ করা উচিত নয়।', 'অত্যন্তিক গরম পড়েছে।'], answer: 1, explain: '"অত্যধিক" বানান ও প্রয়োগ সঠিক।' },
+                { q: '"মাছ গাছে উঠে বসেছে"— বাক্যটি কোন গুণের অভাবে সার্থক নয়?', options: ['আকাঙ্ক্ষা', 'আসত্তি', 'যোগ্যতা', 'প্রাঞ্জলতা'], answer: 2, explain: 'বাস্তবসম্মত নয়— যোগ্যতার অভাব।' },
+                { q: '"যারা দেশপ্রেমিক, তারা সম্মানিত"— বাক্যটির সরল রূপ কোনটি?', options: ['দেশপ্রেমিকরা সম্মানিত।', 'দেশপ্রেম থাকলে সম্মান পাওয়া যায়।', 'দেশপ্রেমিক এবং সম্মানিত মানুষ।', 'দেশপ্রেমের কারণেই সম্মান পাওয়া যায়।'], answer: 0, explain: 'একটি কর্তা ও একটি বিধেয়— সরল বাক্য।' },
+                
+                // ===== ADDITIONAL QUESTIONS (45+) =====
+                // বাক্যের প্রকারভেদ
+                { q: '"তুমি কি বাড়ি যাবে?" — কোন ধরনের বাক্য?', options: ['বিবৃতিমূলক বাক্য', 'প্রশ্নবোধক বাক্য', 'আদেশসূচক বাক্য', 'বিস্ময়সূচক বাক্য'], answer: 1, explain: 'প্রশ্ন জিজ্ঞাসা করা হচ্ছে বলে এটি প্রশ্নবোধক বাক্য।' },
+                { q: '"আহা! কী সুন্দর দৃশ্য!" — কোন ধরনের বাক্য?', options: ['বিবৃতিমূলক বাক্য', 'প্রশ্নবোধক বাক্য', 'আদেশসূচক বাক্য', 'বিস্ময়সূচক বাক্য'], answer: 3, explain: 'আশ্চর্য/আনন্দ প্রকাশ করছে বলে বিস্ময়সূচক বাক্য।' },
+                { q: '"সে স্কুলে যায়।" — কোন ধরনের বাক্য?', options: ['বিবৃতিমূলক বাক্য', 'প্রশ্নবোধক বাক্য', 'ইচ্ছাসূচক বাক্য', 'আদেশসূচক বাক্য'], answer: 0, explain: 'সাধারণ বিবৃতি দেওয়া হচ্ছে বলে বিবৃতিমূলক/নির্দেশক বাক্য।' },
+                { q: '"ভগবান তোমার মঙ্গল করুন।" — কোন ধরনের বাক্য?', options: ['প্রার্থনাসূচক বাক্য', 'আদেশসূচক বাক্য', 'বিস্ময়সূচক বাক্য', 'প্রশ্নবোধক বাক্য'], answer: 0, explain: 'কামনা/প্রার্থনা প্রকাশ করছে বলে প্রার্থনাসূচক/ইচ্ছাসূচক বাক্য।' },
+                { q: '"এখান থেকে চলে যাও।" — কোন ধরনের বাক্য?', options: ['বিবৃতিমূলক বাক্য', 'প্রশ্নবোধক বাক্য', 'আদেশসূচক বাক্য', 'বিস্ময়সূচক বাক্য'], answer: 2, explain: 'আদেশ দেওয়া হচ্ছে বলে আদেশসূচক বাক্য।' },
+                { q: '"তুমি যদি পড়তে, তাহলে পাস করতে।" — কোন ধরনের বাক্য?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'মিশ্র বাক্য'], answer: 1, explain: '"যদি...তাহলে" শর্তসূচক জটিল বাক্য।' },
+                
+                // সরল, যৌগিক, জটিল বাক্য
+                { q: 'সরল বাক্যের বৈশিষ্ট্য কী?', options: ['একাধিক সমাপিকা ক্রিয়া থাকে', 'একটি মাত্র সমাপিকা ক্রিয়া থাকে', 'সংযোজক অব্যয় থাকে', 'সাপেক্ষ সর্বনাম থাকে'], answer: 1, explain: 'সরল বাক্যে একটিমাত্র উদ্দেশ্য, একটি বিধেয় এবং একটি সমাপিকা ক্রিয়া থাকে।' },
+                { q: 'যৌগিক বাক্যে কী দিয়ে বাক্য যুক্ত হয়?', options: ['সাপেক্ষ সর্বনাম', 'সংযোজক অব্যয়', 'অসমাপিকা ক্রিয়া', 'বিশেষণ'], answer: 1, explain: 'যৌগিক বাক্যে এবং, ও, কিন্তু, অথচ, তাই, তবু ইত্যাদি সংযোজক অব্যয় থাকে।' },
+                { q: 'জটিল বাক্যে কী থাকে?', options: ['দুটি স্বাধীন বাক্য', 'একটি প্রধান ও এক বা একাধিক অধীন খণ্ডবাক্য', 'শুধু একটি ক্রিয়া', 'কোনো সংযোজক নেই'], answer: 1, explain: 'জটিল বাক্যে একটি প্রধান খণ্ডবাক্য এবং এক বা একাধিক অধীন/আশ্রিত খণ্ডবাক্য থাকে।' },
+                { q: '"সে গান গায় এবং নাচে।" — কোন ধরনের বাক্য?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'মিশ্র বাক্য'], answer: 2, explain: '"এবং" সংযোজক অব্যয় দিয়ে দুটি স্বাধীন বাক্য যুক্ত বলে যৌগিক বাক্য।' },
+                { q: '"যে পরিশ্রম করে, সে সফল হয়।" — কোন ধরনের বাক্য?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'বিবৃতিমূলক বাক্য'], answer: 1, explain: '"যে...সে" সাপেক্ষ সর্বনাম ব্যবহৃত হয়েছে বলে জটিল বাক্য।' },
+                { q: '"বৃষ্টি হলে মাঠ ভিজবে।" — এটি কোন ধরনের বাক্য?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'মিশ্র বাক্য'], answer: 0, explain: 'একটি সমাপিকা ক্রিয়া ও শর্তবাচক অসমাপিকা ক্রিয়া আছে বলে সরল বাক্য।' },
+                { q: '"তিনি ধনী কিন্তু কৃপণ।" — কোন ধরনের বাক্য?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'প্রশ্নবোধক বাক্য'], answer: 2, explain: '"কিন্তু" সংযোজক অব্যয় দিয়ে দুটি বাক্য যুক্ত বলে যৌগিক বাক্য।' },
+                
+                // বাক্য রূপান্তর
+                { q: '"মন দিয়ে পড়লে সফল হবে।" — জটিল বাক্যে রূপান্তর:', options: ['যদি মন দিয়ে পড়, তাহলে সফল হবে।', 'মন দিয়ে পড় এবং সফল হও।', 'মন দিয়ে পড়, তাই সফল হবে।', 'মন দিয়ে পড়লে সফল হবে।'], answer: 0, explain: 'শর্তসূচক "যদি...তাহলে" দিয়ে জটিল বাক্য হয়।' },
+                { q: '"যারা অধ্যবসায়ী, তারা জীবনে সফল হয়।" — সরল বাক্যে রূপান্তর:', options: ['অধ্যবসায়ীরা জীবনে সফল হয়।', 'তারা অধ্যবসায়ী এবং সফল।', 'যদি অধ্যবসায়ী হও, তবে সফল হবে।', 'অধ্যবসায়ী হলে সফল হবে।'], answer: 0, explain: 'সরল বাক্যে সাপেক্ষ সর্বনাম বাদ দিয়ে একটি বিষয় ও ক্রিয়া রাখতে হয়।' },
+                { q: '"তুমি চেষ্টা কর, তাহলে সফল হবে।" — সরল বাক্যে রূপান্তর:', options: ['চেষ্টা করলে সফল হবে।', 'তুমি চেষ্টা করো এবং সফল হও।', 'যদি চেষ্টা কর, তবে সফল হবে।', 'চেষ্টা ছাড়া সফলতা নেই।'], answer: 0, explain: '"করলে" অসমাপিকা ক্রিয়া দিয়ে সরল বাক্য হয়।' },
+                { q: '"দরিদ্র হলেও তিনি সৎ।" — যৌগিক বাক্যে রূপান্তর:', options: ['তিনি দরিদ্র কিন্তু সৎ।', 'যদিও তিনি দরিদ্র, তবুও সৎ।', 'দরিদ্র এবং সৎ তিনি।', 'তিনি দরিদ্র, তাই সৎ।'], answer: 0, explain: '"কিন্তু" সংযোজক অব্যয় দিয়ে যৌগিক বাক্য হয়।' },
+                { q: '"সে গরিব কিন্তু সৎ।" — জটিল বাক্যে রূপান্তর:', options: ['সে গরিব হলেও সৎ।', 'যদিও সে গরিব, তবুও সে সৎ।', 'সে গরিব এবং সৎ।', 'গরিব হয়েও সে সৎ।'], answer: 1, explain: '"যদিও...তবুও" সাপেক্ষ অব্যয় দিয়ে জটিল বাক্য হয়।' },
+                
+                // বাক্যের গুণ
+                { q: 'বাক্যের আকাঙ্ক্ষা বলতে কী বোঝায়?', options: ['শব্দের সঠিক বিন্যাস', 'বক্তার ইচ্ছা সম্পূর্ণ প্রকাশ', 'অর্থের যথার্থতা', 'ক্রিয়াপদের সঠিক ব্যবহার'], answer: 1, explain: 'আকাঙ্ক্ষা মানে বাক্যের মধ্যে বক্তার ভাব সম্পূর্ণরূপে প্রকাশিত হওয়া।' },
+                { q: 'বাক্যের আসত্তি বলতে কী বোঝায়?', options: ['শব্দের পারস্পরিক সম্বন্ধ', 'পদগুলির ঘনিষ্ঠ সংস্থান', 'অর্থের যথার্থতা', 'সঠিক উচ্চারণ'], answer: 1, explain: 'আসত্তি মানে বাক্যের পদগুলি পরস্পর নিকটে থাকা এবং সঠিক ক্রমে সাজানো।' },
+                { q: 'বাক্যের যোগ্যতা বলতে কী বোঝায়?', options: ['শব্দের সঠিক উচ্চারণ', 'অর্থগত ও ভাবগত সঙ্গতি', 'পদের সঠিক বিন্যাস', 'ক্রিয়ার কাল'], answer: 1, explain: 'যোগ্যতা মানে বাক্যের পদগুলির অর্থগত ও ভাবগত মিল বা সঙ্গতি থাকা।' },
+                { q: '"চাঁদে মাছ চরে।" — বাক্যটিতে কোন গুণের অভাব?', options: ['আকাঙ্ক্ষা', 'আসত্তি', 'যোগ্যতা', 'ক্রমবিন্যাস'], answer: 2, explain: 'চাঁদে মাছ চরা অসম্ভব, তাই যোগ্যতার অভাব।' },
+                { q: '"করি ভাত খাই আমি।" — বাক্যটিতে কোন গুণের অভাব?', options: ['আকাঙ্ক্ষা', 'আসত্তি', 'যোগ্যতা', 'তিনটিই'], answer: 1, explain: 'পদগুলি সঠিক ক্রমে নেই বলে আসত্তির অভাব।' },
+                { q: '"আজ বৃষ্টি হয়েছে তাই রোদ উঠেছে।" — বাক্যটিতে কোন গুণের অভাব?', options: ['আকাঙ্ক্ষা', 'আসত্তি', 'যোগ্যতা', 'কোনো অভাব নেই'], answer: 2, explain: 'বৃষ্টি হলে রোদ ওঠে না, তাই যোগ্যতার অভাব।' },
+                
+                // বাক্যের অংশ
+                { q: 'বাক্যের দুটি অংশ কী কী?', options: ['কর্তা ও কর্ম', 'উদ্দেশ্য ও বিধেয়', 'ক্রিয়া ও বিশেষণ', 'পদ ও পদার্থ'], answer: 1, explain: 'বাক্যের দুটি প্রধান অংশ: উদ্দেশ্য (যাকে বলা হয়) ও বিধেয় (যা বলা হয়)।' },
+                { q: '"রহিম ভাত খায়।" — এই বাক্যে উদ্দেশ্য কী?', options: ['ভাত', 'খায়', 'রহিম', 'ভাত খায়'], answer: 2, explain: 'যার সম্পর্কে কিছু বলা হয় সে উদ্দেশ্য। এখানে "রহিম" উদ্দেশ্য।' },
+                { q: '"রহিম ভাত খায়।" — এই বাক্যে বিধেয় কী?', options: ['রহিম', 'ভাত', 'খায়', 'ভাত খায়'], answer: 3, explain: 'উদ্দেশ্য সম্পর্কে যা বলা হয় তা বিধেয়। এখানে "ভাত খায়" বিধেয়।' },
+                { q: 'বাক্যের প্রধান অংশ কোনটি?', options: ['বিশেষণ', 'ক্রিয়া', 'অব্যয়', 'সর্বনাম'], answer: 1, explain: 'ক্রিয়াপদ ছাড়া বাক্য সম্পূর্ণ হয় না, তাই ক্রিয়া প্রধান অংশ।' },
+                
+                // বাক্যের ভুল সংশোধন
+                { q: '"অনেকগুলি টাকা পেয়েছি।" — শুদ্ধ রূপ কী?', options: ['অনেক টাকা পেয়েছি।', 'অনেকগুলো টাকা পেয়েছি।', 'বহু টাকা পেয়েছি।', 'ক ও গ উভয়ই'], answer: 3, explain: 'টাকা অগণনীয়, তাই "গুলি" বসে না। "অনেক টাকা" বা "বহু টাকা" শুদ্ধ।' },
+                { q: '"সে কেবলমাত্র একজন ছাত্র।" — কোন দোষ আছে?', options: ['গুরুচণ্ডালী', 'বাহুল্য', 'আসত্তি', 'যোগ্যতা'], answer: 1, explain: '"কেবলমাত্র" শব্দে "কেবল" ও "মাত্র" একই অর্থ, তাই বাহুল্য দোষ।' },
+                { q: '"শিক্ষিত লোকেরা এটা জানে।" — শুদ্ধ রূপ কী?', options: ['শিক্ষিতেরা এটা জানে।', 'শিক্ষিত ব্যক্তিরা এটা জানে।', 'শিক্ষিত মানুষেরা এটা জানে।', 'সবগুলোই শুদ্ধ'], answer: 0, explain: '"শিক্ষিত লোকেরা" বাহুল্য। "শিক্ষিতেরা" বা "শিক্ষিত ব্যক্তিরা" শুদ্ধ।' },
+                { q: '"একমাত্র তুমিই পার।" — শুদ্ধ রূপ কী?', options: ['একমাত্র তুমি পার।', 'তুমিই একমাত্র পার।', 'কেবল তুমিই পার।', 'ক ও গ উভয়ই'], answer: 3, explain: '"একমাত্র" ও "ই" একই অর্থ প্রকাশ করে, বাহুল্য দোষ।' },
+                { q: '"সবচেয়ে সর্বশ্রেষ্ঠ" — কোন দোষ আছে?', options: ['গুরুচণ্ডালী দোষ', 'বাহুল্য দোষ', 'আসত্তি দোষ', 'যোগ্যতা দোষ'], answer: 1, explain: '"সবচেয়ে" ও "সর্ব" একই অর্থ, তাই বাহুল্য দোষ।' },
+                { q: '"বিদ্যালয় পলায়ন করা উচিত নয়।" — শুদ্ধ রূপ কী?', options: ['বিদ্যালয় থেকে পলায়ন করা উচিত নয়।', 'বিদ্যালয়ে পলায়ন করা উচিত নয়।', 'বিদ্যালয় পলায়ন অনুচিত।', 'পলায়ন বিদ্যালয় থেকে উচিত নয়।'], answer: 0, explain: '"থেকে" বিভক্তি প্রয়োজন।' },
+                
+                // সাপেক্ষ সর্বনাম ও সংযোজক
+                { q: 'জটিল বাক্যে কোনটি ব্যবহৃত হয়?', options: ['এবং, ও, আর', 'কিন্তু, তবু, অথচ', 'যে, যিনি, যা, যখন', 'তাই, সুতরাং'], answer: 2, explain: 'সাপেক্ষ সর্বনাম (যে, যিনি, যা, যখন, যেহেতু) জটিল বাক্যে ব্যবহৃত হয়।' },
+                { q: '"যখন...তখন" কোন ধরনের সম্পর্ক প্রকাশ করে?', options: ['কারণ-ফল', 'শর্ত', 'সময়', 'বিরোধ'], answer: 2, explain: '"যখন...তখন" সময়ের সম্পর্ক প্রকাশ করে।' },
+                { q: '"যেহেতু...সেহেতু/তাই" কোন ধরনের সম্পর্ক প্রকাশ করে?', options: ['কারণ-ফল', 'শর্ত', 'সময়', 'উদ্দেশ্য'], answer: 0, explain: '"যেহেতু...সেহেতু/তাই" কারণ-ফল সম্পর্ক প্রকাশ করে।' },
+                { q: '"যদি...তবে/তাহলে" কোন ধরনের সম্পর্ক প্রকাশ করে?', options: ['কারণ-ফল', 'শর্ত', 'সময়', 'বিরোধ'], answer: 1, explain: '"যদি...তবে/তাহলে" শর্তমূলক সম্পর্ক প্রকাশ করে।' },
+                { q: '"যদিও...তবুও" কোন ধরনের সম্পর্ক প্রকাশ করে?', options: ['কারণ-ফল', 'শর্ত', 'স্বীকৃতিমূলক/বিরোধ', 'সময়'], answer: 2, explain: '"যদিও...তবুও" স্বীকৃতি সত্ত্বেও বিপরীত ফল দেখায়।' },
+                
+                // অতিরিক্ত প্রশ্ন
+                { q: 'নিষেধাত্মক বাক্যের উদাহরণ কোনটি?', options: ['তুমি যাও।', 'তুমি যেও না।', 'তুমি কি যাবে?', 'আহা! কী সুন্দর!'], answer: 1, explain: '"না" দ্বারা নিষেধ করা হচ্ছে বলে নিষেধাত্মক বাক্য।' },
+                { q: '"সে এলো এবং গেলো।" — বাক্যটি কী ধরনের?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'মিশ্র বাক্য'], answer: 2, explain: '"এবং" সংযোজক অব্যয় দ্বারা যুক্ত দুটি স্বাধীন বাক্য।' },
+                { q: '"দোষ স্বীকার কর, তা না হলে শাস্তি পাবে।" — কোন ধরনের বাক্য?', options: ['সরল বাক্য', 'জটিল বাক্য', 'যৌগিক বাক্য', 'প্রশ্নবোধক বাক্য'], answer: 2, explain: '"তা না হলে" সংযোজক হিসেবে কাজ করছে।' },
+                { q: '"লোকটি চোর, সে গ্রেফতার হয়েছে।" — শুদ্ধ করুন:', options: ['লোকটি চোর এবং সে গ্রেফতার হয়েছে।', 'যে লোকটি চোর, সে গ্রেফতার হয়েছে।', 'লোকটি চোর, তাই গ্রেফতার হয়েছে।', 'সবগুলোই শুদ্ধ'], answer: 1, explain: '"যে...সে" দিয়ে সঠিক জটিল বাক্য হয়।' },
+                { q: 'খণ্ড বাক্য বলতে কী বোঝায়?', options: ['অসম্পূর্ণ বাক্য', 'জটিল বাক্যের অংশ', 'যৌগিক বাক্যের অংশ', 'খ ও গ উভয়ই'], answer: 3, explain: 'জটিল ও যৌগিক বাক্যের অংশগুলোকে খণ্ড বাক্য বলে।' },
+                { q: 'প্রধান খণ্ডবাক্য কোনটি? "যে ছেলেটি এসেছে, সে আমার ভাই।"', options: ['যে ছেলেটি এসেছে', 'সে আমার ভাই', 'ছেলেটি এসেছে', 'আমার ভাই'], answer: 1, explain: '"সে আমার ভাই" প্রধান খণ্ডবাক্য, বাকিটা অধীন।' },
+                { q: '"সত্য কথা বলা উচিত।" — কোন ধরনের বাক্য?', options: ['বিধিমূলক বাক্য', 'নিষেধাত্মক বাক্য', 'প্রশ্নবোধক বাক্য', 'ইচ্ছাসূচক বাক্য'], answer: 0, explain: 'কর্তব্য বা উচিত প্রকাশ করছে বলে বিধিমূলক বাক্য।' },
+                { q: '"মিথ্যা বলা উচিত নয়।" — কোন ধরনের বাক্য?', options: ['বিধিমূলক বাক্য', 'নিষেধাত্মক বাক্য', 'নিষেধমূলক বিধি', 'আদেশসূচক বাক্য'], answer: 2, explain: '"উচিত নয়" দ্বারা কর্তব্যের নিষেধ প্রকাশিত।' },
+                { q: 'অধীন খণ্ডবাক্য কী?', options: ['যা স্বাধীনভাবে অর্থ প্রকাশ করে', 'যা প্রধান বাক্যের উপর নির্ভরশীল', 'যৌগিক বাক্যের অংশ', 'সংযোজক অব্যয়'], answer: 1, explain: 'অধীন/আশ্রিত খণ্ডবাক্য প্রধান বাক্যের উপর নির্ভরশীল।' }
+            ],
+            'শব্দের শ্রেণিবিভাগ': [
+                { q: '‘নদী’ শব্দটি কোন শ্রেণির?', options: ['রূঢ়', 'যোগরূঢ়', 'মৌলিক', 'সাধিত'], answer: 2, explain: 'স্বাধীন ও অবিভাজ্য অর্থে ব্যবহৃত— মৌলিক শব্দ।', source: 'coaching' },
+                { q: 'নিচের কোনটি যোগরূঢ় শব্দ?', options: ['সূর্য', 'পঙ্কজ', 'জল', 'নীল'], answer: 1, explain: '‘পঙ্ক’ + ‘জ’ হলেও অর্থ দাঁড়ায় পদ্ম— যোগরূঢ়।', source: 'coaching' },
+                { q: '‘গবেষণা’ কোন শ্রেণির শব্দ?', options: ['মৌলিক', 'যোগরূঢ়', 'রূঢ়', 'সাধিত'], answer: 2, explain: 'প্রকৃতি অনুযায়ী অর্থ বোঝা যায় না— রূঢ়।', source: 'coaching' },
+                { q: 'কোনটি সাধিত শব্দ?', options: ['কলম', 'সংসদ', 'লাল', 'নাক'], answer: 1, explain: 'সমাসে গঠিত— সাধিত শব্দ।', source: 'coaching' },
+                { q: 'শব্দার্থ অনুসারে শব্দ কয় প্রকার?', options: ['২', '৩', '৪', '৫'], answer: 1, explain: 'মৌলিক, যোগরূঢ় ও রূঢ়।', source: 'coaching' },
+                { q: '‘হস্তী’ শব্দটি—', options: ['মৌলিক', 'যোগরূঢ়', 'রূঢ়', 'সাধিত'], answer: 2, explain: 'অর্থ সরাসরি বোঝা যায় না।', source: 'coaching' },
+                { q: 'কোনটি মৌলিক শব্দ নয়?', options: ['বউ', 'নাক', 'বাবুরাম', 'জলধি'], answer: 3, explain: '‘জলধি’ সমাসে গঠিত।', source: 'coaching' },
+                { q: '‘মহাযাত্রা’ শব্দটি—', options: ['রূঢ়', 'মৌলিক', 'যোগরূঢ়', 'অব্যয়'], answer: 2, explain: 'বিশেষ অর্থে ব্যবহৃত।', source: 'coaching' },
+                { q: 'কোনটি রূঢ় শব্দ নয়?', options: ['হরিণ', 'গবেষণা', 'অশ্রু', 'চিকামারা'], answer: 2, explain: '', source: 'coaching' },
+                { q: '‘রাজপুত’ কোন শ্রেণির?', options: ['মৌলিক', 'যোগরূঢ়', 'রূঢ়', 'সাধিত'], answer: 1, explain: '', source: 'coaching' },
+                { q: '‘পঙ্কজ’ শব্দটিকে যোগরূঢ় বলা হয় কারণ—', options: ['এটি সংস্কৃত শব্দ', 'এর ব্যুৎপত্তিগত অর্থ ও ব্যবহারিক অর্থ ভিন্ন', 'এটি সমাসে গঠিত', 'এটি বিশেষ্য'], answer: 1, explain: 'পঙ্কে জন্মালেও অর্থ দাঁড়ায় পদ্ম।', source: 'ai' },
+                { q: 'নিচের কোনটি রূঢ় শব্দের বৈশিষ্ট্য?', options: ['অর্থ সরাসরি বোঝা যায়', 'প্রকৃতি ও প্রত্যয়ের অর্থ অপরিবর্তিত', 'অর্থ ব্যুৎপত্তি অনুযায়ী নয়', 'উপসর্গ নেই'], answer: 2, explain: '', source: 'ai' },
+                { q: '‘জলধি’ শব্দটির প্রকৃতি বিশ্লেষণ করলে এটি—', options: ['মৌলিক', 'যোগরূঢ়', 'সাধিত (সমাস)', 'রূঢ়'], answer: 2, explain: 'জল + ধি (সমাস)।', source: 'ai' },
+                { q: 'কোনটি মৌলিক শব্দ হওয়ার শর্ত পূরণ করে না?', options: ['স্বাধীন অর্থ', 'অবিভাজ্য', 'সমাসে গঠিত', 'নিজস্ব অর্থ'], answer: 2, explain: '', source: 'ai' },
+                { q: 'ব্যাংক পরীক্ষায় ‘শব্দের শ্রেণিবিভাগ’ প্রশ্ন সাধারণত আসে—', options: ['বানান সংশোধনে', 'ব্যুৎপত্তি বিশ্লেষণে', 'সরাসরি শ্রেণি নির্ধারণে', 'সবগুলোতে'], answer: 3, explain: '', source: 'ai' },
+                { q: '‘হরিণ’ শব্দটি রূঢ় কারণ—', options: ['প্রাণীর নাম', 'ব্যুৎপত্তি অনুযায়ী অর্থ বোঝা যায় না', 'বিদেশি শব্দ', 'সাধিত নয়'], answer: 1, explain: '', source: 'ai' },
+                { q: 'নিচের কোন pair-টি একই শ্রেণির নয়?', options: ['পঙ্কজ – রাজপুত', 'গবেষণা – চিকামারা', 'নাক – বউ', 'জলধি – মহাযাত্রা'], answer: 3, explain: 'জলধি সাধিত, মহাযাত্রা যোগরূঢ়।', source: 'ai' },
+                { q: '‘মৌলিক শব্দ’ সম্পর্কে ভুল ধারণা কোনটি?', options: ['স্বাধীন অর্থ বহন করে', 'ভাঙা যায় না', 'সবসময় সংস্কৃতমূল', 'নিজস্ব অর্থ আছে'], answer: 2, explain: '', source: 'ai' },
+                { q: 'নিচের কোনটি সবচেয়ে বেশি bank-relevant শব্দ?', options: ['পাগলি', 'গবেষণা', 'মহাযাত্রা', 'বাবুরাম'], answer: 1, explain: '', source: 'ai' },
+                { q: '‘চিকামারা’ শব্দটি—', options: ['মৌলিক', 'যোগরূঢ়', 'রূঢ়', 'সাধিত'], answer: 2, explain: '', source: 'ai' }
+            ],
+            'সন্ধি': [
+                { q: '‘নবীন’ শব্দটির সন্ধি বিচ্ছেদ কোনটি?', options: ['নব + ইন', 'নব + ঈন', 'ন + বীন', 'নব + এন'], answer: 0, explain: 'নব + ইন → নবীন (দীর্ঘ স্বরসন্ধি)।', source: 'coaching' },
+                { q: '‘বিদ্যালয়’ শব্দে কোন সন্ধি হয়েছে?', options: ['গুণ সন্ধি', 'য-সন্ধি', 'বৃদ্ধি সন্ধি', 'বিসর্গ সন্ধি'], answer: 1, explain: 'বিদ্যা + আলয় → বিদ্যালয় (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘রামায়ণ’ শব্দের সন্ধি বিচ্ছেদ—', options: ['রাম + আয়ণ', 'রাম + অয়ণ', 'রামা + য়ণ', 'রাম + অয়ন'], answer: 0, explain: 'রাম + আয়ণ → রামায়ণ (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘দেবেন্দ্র’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন সন্ধি', 'বিসর্গ সন্ধি', 'গুণ সন্ধি', 'বৃদ্ধি সন্ধি'], answer: 2, explain: 'দেব + ইন্দ্র → দেবেন্দ্র (গুণ সন্ধি)।', source: 'coaching' },
+                { q: 'নিচের কোনটি বিসর্গ সন্ধির উদাহরণ?', options: ['মহারাজ', 'সদুপদেশ', 'দেবালয়', 'রাজপথ'], answer: 1, explain: 'সদঃ + উপদেশ → সদুপদেশ (বিসর্গ সন্ধি)।', source: 'coaching' },
+                { q: '‘লোকেশ’ শব্দটির সন্ধি বিচ্ছেদ—', options: ['লোক + ঈশ', 'লোক + ইশ', 'লোক + এশ', 'লো + কেশ'], answer: 0, explain: 'লোক + ঈশ → লোকেশ (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘শিবালয়’ কোন সন্ধির উদাহরণ?', options: ['গুণ সন্ধি', 'বৃদ্ধি সন্ধি', 'য-সন্ধি', 'বিসর্গ সন্ধি'], answer: 2, explain: 'শিব + আলয় → শিবালয় (য-সন্ধি)।', source: 'ai' },
+                { q: '‘সূর্যোদয়’ শব্দে কোন সন্ধি হয়েছে?', options: ['গুণ', 'য', 'দীর্ঘ', 'বৃদ্ধি'], answer: 1, explain: 'সূর্য + উদয় → সূর্যোদয় (য-সন্ধি)।', source: 'ai' },
+                { q: '‘দুঃখিত’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বিসর্গ', 'ব্যঞ্জন', 'দীর্ঘ'], answer: 1, explain: 'দুঃ + খিত → দুঃখিত (বিসর্গ সন্ধি)।', source: 'ai' },
+                { q: '‘রাজেন্দ্র’ শব্দের সন্ধি বিচ্ছেদ—', options: ['রাজা + ইন্দ্র', 'রাজ + ইন্দ্র', 'রাজ + এন্দ্র', 'রাজা + ঈন্দ্র'], answer: 1, explain: 'রাজ + ইন্দ্র → রাজেন্দ্র (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘পরোপকার’ শব্দে কোন সন্ধি?', options: ['বৃদ্ধি', 'গুণ', 'য', 'বিসর্গ'], answer: 1, explain: 'পর + উপকার → পরোপকার (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘হিতৈষী’ শব্দে কোন সন্ধি?', options: ['বৃদ্ধি', 'গুণ', 'য', 'দীর্ঘ'], answer: 1, explain: 'হিত + এষী → হিতৈষী (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘মহোৎসব’ শব্দটির সন্ধি—', options: ['মহা + উৎসব', 'মহ + উৎসব', 'মহো + উৎসব', 'মহা + ওৎসব'], answer: 0, explain: 'মহা + উৎসব → মহোৎসব (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘দিগন্ত’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন', 'বিসর্গ', 'গুণ', 'দীর্ঘ'], answer: 0, explain: 'দিক + অন্ত → দিগন্ত (ব্যঞ্জন সন্ধি)।', source: 'ai' },
+                { q: '‘সচ্চরিত্র’ কোন সন্ধির উদাহরণ?', options: ['ব্যঞ্জন', 'বিসর্গ', 'গুণ', 'য'], answer: 0, explain: 'সৎ + চরিত্র → সচ্চরিত্র (ব্যঞ্জন সন্ধি)।', source: 'coaching' },
+                { q: '‘বিদ্যালয়’ শব্দটির সন্ধি বিচ্ছেদ—', options: ['বিদ্যা + লয়', 'বিদ্যা + আলয়', 'বিদ + আলয়', 'বিদ্যা + য়ালয়'], answer: 1, explain: 'বিদ্যা + আলয় → বিদ্যালয় (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘দেবেন্দ্র’ শব্দে কোন সন্ধি হয়েছে?', options: ['বৃদ্ধি', 'গুণ', 'য', 'বিসর্গ'], answer: 1, explain: 'দেব + ইন্দ্র → দেবেন্দ্র (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘মহোৎসব’ শব্দটির সন্ধি—', options: ['মহ + উৎসব', 'মহা + উৎসব', 'মহো + উৎসব', 'মহা + ওৎসব'], answer: 1, explain: 'মহা + উৎসব → মহোৎসব (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘দুঃখিত’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন', 'বিসর্গ', 'গুণ', 'বৃদ্ধি'], answer: 1, explain: 'দুঃ + খিত → দুঃখিত (বিসর্গ সন্ধি)।', source: 'coaching' },
+                { q: '‘শিবালয়’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'য', 'বিসর্গ'], answer: 2, explain: 'শিব + আলয় → শিবালয় (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘নরেন্দ্র’ শব্দটির সন্ধি বিচ্ছেদ—', options: ['নর + এন্দ্র', 'নর + ইন্দ্র', 'নর + ঈন্দ্র', 'নর + অন্ত্র'], answer: 1, explain: 'নর + ইন্দ্র → নরেন্দ্র (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘সচ্চরিত্র’ শব্দে কোন সন্ধি?', options: ['বিসর্গ', 'ব্যঞ্জন', 'গুণ', 'য'], answer: 1, explain: 'সৎ + চরিত্র → সচ্চরিত্র (ব্যঞ্জন সন্ধি)।', source: 'coaching' },
+                { q: '‘পরোপকার’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'য', 'বিসর্গ'], answer: 0, explain: 'পর + উপকার → পরোপকার (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘লোকেশ’ শব্দটির সন্ধি বিচ্ছেদ—', options: ['লোক + এশ', 'লোক + ঈশ', 'লোক + ইশ', 'লো + কেশ'], answer: 1, explain: 'লোক + ঈশ → লোকেশ (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘সূর্যোদয়’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'য', 'দীর্ঘ'], answer: 2, explain: 'সূর্য + উদয় → সূর্যোদয় (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘দিগন্ত’ শব্দে কোন সন্ধি?', options: ['বিসর্গ', 'ব্যঞ্জন', 'গুণ', 'য'], answer: 1, explain: 'দিক + অন্ত → দিগন্ত (ব্যঞ্জন সন্ধি)।', source: 'coaching' },
+                { q: '‘হিতৈষী’ শব্দে কোন সন্ধি?', options: ['বৃদ্ধি', 'গুণ', 'য', 'বিসর্গ'], answer: 1, explain: 'হিত + এষী → হিতৈষী (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘রাজর্ষি’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'য', 'বিসর্গ'], answer: 0, explain: 'রাজা + ঋষি → রাজর্ষি (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘মহর্ষি’ শব্দটির সন্ধি—', options: ['মহা + ঋষি', 'মহ + ঋষি', 'মহো + ঋষি', 'মহা + র্ষি'], answer: 0, explain: 'মহা + ঋষি → মহর্ষি (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘সদুপদেশ’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন', 'গুণ', 'বিসর্গ', 'য'], answer: 2, explain: 'সদঃ + উপদেশ → সদুপদেশ (বিসর্গ সন্ধি)।', source: 'coaching' },
+                { q: '‘বিশ্ববিদ্যালয়’ শব্দে কোন সন্ধি?', options: ['য', 'গুণ', 'বৃদ্ধি', 'বিসর্গ'], answer: 0, explain: 'বিদ্যা + আলয় → বিদ্যালয় (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘অতিথি’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'দীর্ঘ', 'ব্যঞ্জন'], answer: 2, explain: 'অতি + থি → অতিথি (দীর্ঘ সন্ধি)।', source: 'coaching' },
+                { q: '‘রাজপুত্র’ শব্দে কোন সন্ধি?', options: ['গুণ', 'ব্যঞ্জন', 'বিসর্গ', 'য'], answer: 1, explain: 'রাজ + পুত্র → রাজপুত্র (ব্যঞ্জন সন্ধি)।', source: 'coaching' },
+                { q: '‘মহাত্মা’ শব্দে কোন সন্ধি?', options: ['য', 'গুণ', 'বৃদ্ধি', 'বিসর্গ'], answer: 1, explain: 'মহা + আত্মা → মহাত্মা (গুণ সন্ধি)।', source: 'coaching' },
+                { q: '‘রামায়ণ’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'য', 'দীর্ঘ'], answer: 2, explain: 'রাম + আয়ণ → রামায়ণ (য-সন্ধি)।', source: 'coaching' },
+                { q: '‘শিবোৎসব’ শব্দে কোন সন্ধি?', options: ['বৃদ্ধি', 'গুণ', 'য', 'বিসর্গ'], answer: 1, explain: 'শিব + উৎসব → শিবোৎসব (গুণ সন্ধি)।', source: 'ai' },
+                { q: 'কোন শব্দটিতে বিসর্গ সন্ধি আছে?', options: ['দুঃখ', 'বিদ্যালয়', 'নরেন্দ্র', 'মহর্ষি'], answer: 0, explain: 'দুঃ + খ → দুঃখ (বিসর্গ সন্ধি)।', source: 'ai' },
+                { q: '‘লোকহিত’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন', 'বিসর্গ', 'গুণ', 'য'], answer: 0, explain: 'লোক + হিত → লোকহিত (ব্যঞ্জন সন্ধি)।', source: 'ai' },
+                { q: '‘রামেশ্বর’ শব্দের সন্ধি—', options: ['রাম + ঈশ্বর', 'রাম + ইশ্বর', 'রামা + ঈশ্বর', 'রাম + শ্বর'], answer: 0, explain: 'রাম + ঈশ্বর → রামেশ্বর (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘সত্যান্বেষণ’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন', 'গুণ', 'বৃদ্ধি', 'য'], answer: 0, explain: 'সত্য + অনুসন্ধান → সত্যান্বেষণ (ব্যঞ্জন সন্ধি)।', source: 'ai' },
+                { q: 'কোনটি য-সন্ধির উদাহরণ?', options: ['দেবেন্দ্র', 'দুঃখ', 'শিবালয়', 'মহাত্মা'], answer: 2, explain: 'শিব + আলয় → শিবালয় (য-সন্ধি)।', source: 'ai' },
+                { q: '‘তপোবন’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'ব্যঞ্জন', 'য'], answer: 0, explain: 'তপ + বন → তপোবন (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘গিরীশ’ শব্দটির সন্ধি বিচ্ছেদ—', options: ['গিরি + ঈশ', 'গির + ঈশ', 'গিরী + শ', 'গিরি + ইশ'], answer: 0, explain: 'গিরি + ঈশ → গিরীশ (গুণ সন্ধি)।', source: 'ai' },
+                { q: 'কোন শব্দে দীর্ঘ সন্ধি হয়েছে?', options: ['অতিথি', 'দিগন্ত', 'মহর্ষি', 'পরোপকার'], answer: 0, explain: 'অতি + থি → অতিথি (দীর্ঘ সন্ধি)।', source: 'ai' },
+                { q: '‘নরাধম’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'ব্যঞ্জন', 'য'], answer: 0, explain: 'নর + অধম → নরাধম (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘সর্বেশ্বর’ শব্দে কোন সন্ধি?', options: ['য', 'গুণ', 'বিসর্গ', 'ব্যঞ্জন'], answer: 1, explain: 'সর্ব + ঈশ্বর → সর্বেশ্বর (গুণ সন্ধি)।', source: 'ai' },
+                { q: 'কোনটি সন্ধি-বিচ্ছেদ সঠিক?', options: ['পরোপকার = পর + উপকার', 'মহাত্মা = মহ + আত্মা', 'লোকেশ = লোক + ইশ', 'দুঃখ = দুঃ + অখ'], answer: 0, explain: 'পর + উপকার → পরোপকার সঠিক।', source: 'ai' },
+                { q: '‘হিমালয়’ শব্দে কোন সন্ধি?', options: ['ব্যঞ্জন', 'য', 'গুণ', 'বিসর্গ'], answer: 1, explain: 'হিম + আলয় → হিমালয় (য-সন্ধি)।', source: 'ai' },
+                { q: '‘সচ্চরিত্র’ কোন ধরনের সন্ধি?', options: ['বিসর্গ', 'ব্যঞ্জন', 'গুণ', 'বৃদ্ধি'], answer: 1, explain: 'সৎ + চরিত্র → সচ্চরিত্র (ব্যঞ্জন সন্ধি)।', source: 'ai' },
+                { q: '‘নিষ্কলুষ’ শব্দে কোন সন্ধি?', options: ['বিসর্গ', 'গুণ', 'ব্যঞ্জন', 'য'], answer: 0, explain: 'নিঃ + কলুষ → নিষ্কলুষ (বিসর্গ সন্ধি)।', source: 'ai' },
+                { q: 'কোন শব্দে বৃদ্ধি সন্ধি হয়েছে?', options: ['রাজর্ষি', 'ঐশ্বর্য', 'অতিথি', 'শিবালয়'], answer: 1, explain: 'ঈ + অ → ঐ (বৃদ্ধি সন্ধি)।', source: 'ai' },
+                { q: '‘প্রত্যুপকার’ শব্দে কোন সন্ধি?', options: ['য', 'ব্যঞ্জন', 'গুণ', 'বিসর্গ'], answer: 2, explain: 'প্রতি + উপকার → প্রত্যুপকার (গুণ সন্ধি)।', source: 'ai' },
+                { q: '‘অন্নপূর্ণা’ শব্দে কোন সন্ধি?', options: ['গুণ', 'ব্যঞ্জন', 'বিসর্গ', 'য'], answer: 1, explain: 'অন্ন + পূর্ণা → অন্নপূর্ণা (ব্যঞ্জন সন্ধি)।', source: 'ai' },
+                { q: '‘লোকালয়’ শব্দে কোন সন্ধি?', options: ['য', 'গুণ', 'বৃদ্ধি', 'বিসর্গ'], answer: 0, explain: 'লোক + আলয় → লোকালয় (য-সন্ধি)।', source: 'ai' },
+                { q: '‘দেবর্ষি’ শব্দে কোন সন্ধি?', options: ['গুণ', 'বৃদ্ধি', 'ব্যঞ্জন', 'য'], answer: 0, explain: 'দেব + ঋষি → দেবর্ষি (গুণ সন্ধি)।', source: 'ai' }
+            ],
+            'ধ্বনি ও বর্ণ': [
+                { q: 'ভাষার ক্ষুদ্রতম একক কোনটি?', options: ['শব্দ', 'বাক্য', 'ধ্বনি', 'বর্ণ'], answer: 2, explain: 'ধ্বনি হলো ভাষার ক্ষুদ্রতম একক।', source: 'coaching' },
+                { q: 'ধ্বনির লিখিত রূপকে কী বলে?', options: ['অক্ষর', 'শব্দ', 'বর্ণ', 'কার'], answer: 2, explain: 'ধ্বনির লিখিত রূপই বর্ণ।', source: 'coaching' },
+                { q: 'বাংলা ভাষায় মোট মৌলিক ধ্বনি কয়টি?', options: ['৩৫', '৩৬', '৩৭', '৩৯'], answer: 2, explain: 'বাংলা ভাষায় মোট ৩৭টি মৌলিক ধ্বনি আছে।', source: 'coaching' },
+                { q: 'মৌলিক স্বরধ্বনি কয়টি?', options: ['৫', '৭', '৯', '১১'], answer: 1, explain: 'মৌলিক স্বরধ্বনি ৭টি।', source: 'coaching' },
+                { q: 'কোনটি মৌলিক স্বরধ্বনি?', options: ['ঐ', 'ঔ', 'অ', 'ঋ'], answer: 2, explain: '‘অ’ মৌলিক স্বরধ্বনি।', source: 'coaching' },
+                { q: 'মৌলিক ব্যঞ্জনধ্বনি কয়টি?', options: ['২৫', '২৭', '৩০', '৩৯'], answer: 2, explain: 'মৌলিক ব্যঞ্জনধ্বনি ৩০টি।', source: 'coaching' },
+                { q: 'স্বরধ্বনির উচ্চারণে কোন বাধা থাকে না?', options: ['জিহ্বা', 'কণ্ঠ', 'বায়ুপ্রবাহ', 'বাধা থাকে না'], answer: 3, explain: 'স্বরধ্বনি উচ্চারণে বায়ুপ্রবাহে বাধা থাকে না।', source: 'coaching' },
+                { q: '‘অক্ষর’ বলতে কী বোঝায়?', options: ['শব্দের অংশ', 'ধ্বনির লিখিত রূপ', 'উচ্চারণের একক', 'বাক্যের অংশ'], answer: 2, explain: 'এক নিঃশ্বাসে উচ্চারিত ধ্বনি বা ধ্বনিগুচ্ছই অক্ষর।', source: 'coaching' },
+                { q: '‘আকাশ’ শব্দে অক্ষর কয়টি?', options: ['১', '২', '৩', '৪'], answer: 1, explain: 'আ + কাশ → ২টি অক্ষর।', source: 'coaching' },
+                { q: 'স্বরান্ত অক্ষরের বৈশিষ্ট্য কী?', options: ['শেষে ব্যঞ্জন থাকে', 'শুরুতে স্বর থাকে', 'শেষে স্বর থাকে', 'মাঝখানে স্বর থাকে'], answer: 2, explain: 'যে অক্ষরের শেষে স্বরধ্বনি থাকে তাকে স্বরান্ত অক্ষর বলে।', source: 'coaching' },
+                { q: 'ব্যঞ্জনান্ত অক্ষরের উদাহরণ কোনটি?', options: ['আশা', 'ভাষা', 'শীতল', 'আকাশ'], answer: 2, explain: '‘শীতল’ শব্দে শেষ ধ্বনি ব্যঞ্জন।', source: 'coaching' },
+                { q: 'বাংলা বর্ণমালায় মোট বর্ণ কয়টি?', options: ['৪৮', '৪৯', '৫০', '৫২'], answer: 2, explain: 'বাংলা বর্ণমালায় মোট ৫০টি বর্ণ।', source: 'coaching' },
+                { q: 'স্বরবর্ণ কয়টি?', options: ['৯', '১০', '১১', '১২'], answer: 2, explain: 'স্বরবর্ণ ১১টি।', source: 'coaching' },
+                { q: 'ব্যঞ্জনবর্ণ কয়টি?', options: ['৩৭', '৩৮', '৩৯', '৪০'], answer: 2, explain: 'ব্যঞ্জনবর্ণ ৩৯টি।', source: 'coaching' },
+                { q: 'হ্রস্ব স্বর কয়টি?', options: ['৩', '৪', '৫', '৬'], answer: 1, explain: 'হ্রস্ব স্বর ৪টি— অ, ই, উ, ঋ।', source: 'coaching' },
+                { q: 'দীর্ঘ স্বর কয়টি?', options: ['৫', '৬', '৭', '৮'], answer: 2, explain: 'দীর্ঘ স্বর ৭টি।', source: 'coaching' },
+                { q: 'কোনটি যৌগিক স্বর?', options: ['আ', 'ই', 'ঐ', 'ঋ'], answer: 2, explain: 'ঐ ও ঔ যৌগিক স্বর।', source: 'coaching' },
+                { q: 'ধ্বনিতত্ত্ব কোন বিষয় নিয়ে আলোচনা করে?', options: ['শব্দ', 'বাক্য', 'ধ্বনি', 'অর্থ'], answer: 2, explain: 'ধ্বনির উচ্চারণ ও বৈশিষ্ট্য ধ্বনিতত্ত্বের বিষয়।', source: 'coaching' },
+                { q: '‘ধ্বনি দৃশ্যমান নয়’— কেন?', options: ['শব্দ বলে', 'উচ্চারণগত', 'শ্রুতিগ্রাহ্য', 'লিখিত নয়'], answer: 2, explain: 'ধ্বনি কানে শোনা যায়, চোখে দেখা যায় না।', source: 'coaching' },
+                { q: 'কোনটি ধ্বনিতত্ত্বের আলোচ্য বিষয়?', options: ['কারক', 'সমাস', 'বর্ণবিন্যাস', 'বাক্যরূপ'], answer: 2, explain: 'বর্ণবিন্যাস ধ্বনিতত্ত্বের অন্তর্ভুক্ত।', source: 'coaching' },
+                { q: 'ধ্বনি ও বর্ণের সম্পর্ক কোনটি সঠিক?', options: ['ধ্বনি লিখিত, বর্ণ উচ্চারিত', 'ধ্বনি শ্রুতিগ্রাহ্য, বর্ণ দৃশ্যমান', 'উভয়ই লিখিত', 'উভয়ই শ্রুতিগ্রাহ্য'], answer: 1, explain: 'ধ্বনি শোনা যায়, বর্ণ লেখা যায়।', source: 'ai' },
+                { q: '‘অয়া’ ধ্বনি সম্পর্কে সঠিক বক্তব্য—', options: ['এটি স্বরবর্ণ', 'এটি ব্যঞ্জন', 'এটি মৌলিক স্বরধ্বনি', 'এটি বর্ণ নয়'], answer: 3, explain: '‘অয়া’ ধ্বনি বর্ণ দ্বারা প্রকাশযোগ্য নয়।', source: 'ai' },
+                { q: 'বাংলা বর্ণমালার স্থায়ী রূপ দেন—', options: ['রামমোহন রায়', 'পাণিনি', 'ঈশ্বরচন্দ্র বিদ্যাসাগর', 'শহীদুল্লাহ'], answer: 2, explain: 'বিদ্যাসাগর বাংলা বর্ণমালার স্থায়ী রূপ দেন।', source: 'ai' },
+                { q: 'কোনটি স্পর্শ ব্যঞ্জন?', options: ['র', 'ল', 'ক', 'হ'], answer: 2, explain: 'ক থেকে ম পর্যন্ত স্পর্শ ব্যঞ্জন।', source: 'ai' },
+                { q: 'উচ্চারণস্থানের ভিত্তিতে ‘প’ কোন শ্রেণির?', options: ['কণ্ঠ্য', 'তালব্য', 'মূর্ধন্য', 'ওষ্ঠ্য'], answer: 3, explain: 'প ওষ্ঠ্য ব্যঞ্জন।', source: 'ai' },
+                { q: 'নাসিক্য ধ্বনি কোনটি?', options: ['ক', 'গ', 'ঙ', 'শ'], answer: 2, explain: 'ঙ নাসিক্য ধ্বনি।', source: 'ai' },
+                { q: 'উষ্ম ধ্বনি কোনটি?', options: ['ক', 'চ', 'শ', 'র'], answer: 2, explain: 'শ, স, ষ উষ্ম ধ্বনি।', source: 'ai' },
+                { q: '‘র’ ধ্বনি কোন শ্রেণির?', options: ['উষ্ম', 'স্পর্শ', 'অন্তঃস্থ', 'নাসিক্য'], answer: 2, explain: 'র অন্তঃস্থ ধ্বনি।', source: 'ai' },
+                { q: 'কোনটি অঘোষ ধ্বনি?', options: ['ম', 'ন', 'শ', 'র'], answer: 2, explain: 'শ অঘোষ ধ্বনি।', source: 'ai' },
+                { q: 'কোনটি মহাপ্রাণ ধ্বনি?', options: ['ক', 'গ', 'খ', 'ট'], answer: 2, explain: 'খ মহাপ্রাণ ধ্বনি।', source: 'ai' },
+                { q: 'ধ্বনির পরিবর্তন নিয়ে আলোচনা করে—', options: ['রূপতত্ত্ব', 'ধ্বনিতত্ত্ব', 'বাক্যতত্ত্ব', 'অর্থতত্ত্ব'], answer: 1, explain: 'ধ্বনির পরিবর্তন ধ্বনিতত্ত্বের বিষয়।', source: 'ai' },
+                { q: 'কোনটি তালব্য ব্যঞ্জন?', options: ['ক', 'চ', 'ট', 'প'], answer: 1, explain: 'চ তালব্য ব্যঞ্জন।', source: 'ai' },
+                { q: '‘ঋ’ ধ্বনিকে বাংলা ভাষায়—', options: ['স্বরধ্বনি ধরা হয়', 'ব্যঞ্জন ধরা হয়', 'স্বরধ্বনি ধরা হয় না', 'অক্ষর ধরা হয় না'], answer: 2, explain: 'বাংলায় ঋ স্বরধ্বনি হিসেবে ব্যবহৃত হয় না।', source: 'ai' },
+                { q: 'বর্ণের কাজ কী?', options: ['শব্দ গঠন', 'ধ্বনি প্রকাশ', 'বাক্য গঠন', 'অর্থ প্রকাশ'], answer: 1, explain: 'বর্ণ ধ্বনি প্রকাশ করে।', source: 'ai' },
+                { q: 'ধ্বনির লিখিত প্রতীক—', options: ['অক্ষর', 'শব্দ', 'বর্ণ', 'বাক্য'], answer: 2, explain: 'ধ্বনির লিখিত প্রতীক হলো বর্ণ।', source: 'ai' },
+                { q: 'কোনটি মূর্ধন্য ব্যঞ্জন?', options: ['ত', 'চ', 'ট', 'প'], answer: 2, explain: 'ট মূর্ধন্য ব্যঞ্জন।', source: 'ai' },
+                { q: 'ধ্বনি কিসের মাধ্যমে সৃষ্টি হয়?', options: ['কলম', 'কাগজ', 'বাগযন্ত্র', 'চোখ'], answer: 2, explain: 'বাগযন্ত্রের মাধ্যমে ধ্বনি সৃষ্টি হয়।', source: 'ai' },
+                { q: 'কোনটি বাগযন্ত্রের অংশ নয়?', options: ['জিহ্বা', 'কণ্ঠ', 'ফুসফুস', 'হাত'], answer: 3, explain: 'হাত বাগযন্ত্রের অংশ নয়।', source: 'ai' },
+                { q: 'ধ্বনির শ্রেণিবিভাগ করা হয়—', options: ['অর্থভিত্তিক', 'উচ্চারণভিত্তিক', 'বানানভিত্তিক', 'বাক্যভিত্তিক'], answer: 1, explain: 'ধ্বনির শ্রেণিবিভাগ উচ্চারণভিত্তিক।', source: 'ai' },
+                { q: 'Bank পরীক্ষায় ধ্বনি–বর্ণ থেকে বেশি আসে—', options: ['রচনা', 'সংজ্ঞা', 'সংখ্যা ও শ্রেণিভাগ', 'অনুচ্ছেদ'], answer: 2, explain: 'Bank পরীক্ষায় সংখ্যা, শ্রেণিভাগভিত্তিক প্রশ্ন বেশি আসে।', source: 'ai' }
+            ],
+            'Percentage': [
+                { q: 'A price rises from 400 to 500. What is the % increase?', options: ['20%', '22.5%', '25%', '30%'], answer: 2, explain: 'Increase 100 on 400 => 100/400 = 0.25 = 25%.' },
+                { q: 'What is 12.5% expressed as a fraction?', options: ['1/6', '1/8', '1/10', '1/12'], answer: 1, explain: '12.5% = 12.5/100 = 1/8.' },
+                { q: 'If salary increases by 10% then decreases by 10%, net change?', options: ['-1%', '0%', '+1%', '+2%'], answer: 0, explain: '1.10 * 0.90 = 0.99 => -1%.' },
+                { q: 'Marks drop from 640 to 512. Percentage decrease?', options: ['15%', '18%', '20%', '25%'], answer: 2, explain: '128/640 = 0.2 => 20% decrease.' },
+                { q: 'Successive discounts 10% and 20% equal to single discount of?', options: ['28%', '30%', '32%', '34%'], answer: 0, explain: 'Net = 1 - 0.9*0.8 = 0.28 => 28%.' }
+            ],
+            'Time & Work': [
+                { q: 'A completes work in 12 days, B in 18. Together?', options: ['6', '7.2', '7.5', '8'], answer: 2, explain: '1/12 + 1/18 = 5/36 => 36/5 = 7.2 days.' },
+                { q: 'A is twice efficient as B. Together they finish in 12 days. B alone?', options: ['24', '30', '32', '36'], answer: 3, explain: 'Let B = x work/day, A = 2x. Total 3x = 1/12 => x = 1/36.' },
+                { q: 'Pipes fill tank in 20 and 30 min. Together?', options: ['10', '12', '18', '25'], answer: 1, explain: 'Rates: 1/20+1/30=5/60 => 12 min.' }
+            ],
+            'Profit & Loss': [
+                { q: 'Bought at 800, sold at 880. Profit %?', options: ['8%', '9%', '10%', '11%'], answer: 2, explain: '80/800 = 0.10 => 10% profit.' },
+                { q: 'Marked 25% above CP, gave 10% discount. Profit %?', options: ['10%', '12.5%', '15%', '20%'], answer: 1, explain: '1.25 * 0.9 = 1.125 => 12.5%.' },
+                { q: 'Loss of 15% on 3400 equals?', options: ['450', '480', '510', '560'], answer: 2, explain: '0.15 * 3400 = 510.' }
+            ],
+            'Series': [
+                { q: '2, 6, 12, 20, ?', options: ['28', '30', '32', '34'], answer: 1, explain: 'Differences 4,6,8 => next diff 10 => 30.' },
+                { q: '3, 9, 27, 81, ?', options: ['162', '200', '243', '324'], answer: 2, explain: 'Multiply by 3 each step => 243.' },
+                { q: '4, 9, 19, 34, ?', options: ['50', '54', '60', '64'], answer: 2, explain: 'Differences 5,10,15 => next 20 => 54? Wait: 34+20=54. Correct 54.' }
+            ],
+            'Seating Arrangement': [
+                { q: 'In a row of 8, A is 3rd from left. From right?', options: ['4th', '5th', '6th', '7th'], answer: 2, explain: 'From right = 8 - 3 + 1 = 6th.' },
+                { q: 'Circular seating facing center: immediate neighbors count?', options: ['1', '2', '3', '4'], answer: 1, explain: 'Each person has two neighbors.' },
+                { q: 'If P sits second left of Q, and R is immediate right of Q, how many between P and R?', options: ['0', '1', '2', '3'], answer: 1, explain: 'Order ...P _ Q R... => one person between P and R.' }
+            ],
+            'Internet & Email': [
+                { q: 'Phishing primarily aims to?', options: ['Speed websites', 'Steal credentials', 'Block ads', 'Backup data'], answer: 1, explain: 'Phishing is social engineering to steal credentials.' },
+                { q: 'Shortcut to send email in most clients?', options: ['Ctrl+S', 'Ctrl+Enter', 'Alt+S', 'Ctrl+Shift+S'], answer: 1, explain: 'Ctrl+Enter sends in Gmail/Outlook (desktop uses Alt+S). We accept Ctrl+Enter here.' },
+                { q: 'POP3 and IMAP are', options: ['Mail retrieval protocols', 'Chat apps', 'Browsers', 'Antivirus'], answer: 0, explain: 'They are email retrieval protocols.' }
+            ],
+            'Grammar': [
+                { q: 'Choose correct: He ______ to school daily.', options: ['go', 'goes', 'gone', 'going'], answer: 1, explain: 'Singular subject takes "goes".' },
+                { q: 'Identify error: Neither the teacher nor the students was late.', options: ['No error', 'Teacher', 'Students', 'Verb'], answer: 3, explain: 'Nearest subject (students) is plural, so verb should be "were". Error at verb.' },
+                { q: 'Passive voice of: They will announce results.', options: ['Results will be announced', 'Results are announced', 'Results announced', 'Results has been announced'], answer: 0, explain: 'Future passive: will be announced.' }
+            ],
+            'Banking Awareness': [
+                { q: 'CRR stands for?', options: ['Cash Reserve Ratio', 'Credit Risk Ratio', 'Capital Reserve Requirement', 'Cash Risk Ratio'], answer: 0, explain: 'CRR = Cash Reserve Ratio.' },
+                { q: 'Lender of last resort in Bangladesh is?', options: ['Sonali Bank', 'Ministry of Finance', 'Bangladesh Bank', 'IMF'], answer: 2, explain: 'Bangladesh Bank is the lender of last resort.' },
+                { q: 'KYC primarily prevents?', options: ['Server downtime', 'Money laundering', 'Marketing spam', 'Tax rebates'], answer: 1, explain: 'KYC combats AML/CTF.' }
+            ],
+            'Quick Mix': []
+        };
+
+        const mcqStatsKey = 'mcq-stats';
+        const mistakeNotebookKey = 'mistake-notebook';
+        const conceptThreshold = 3; // Show popup after 3 same mistakes
+        
+        let mcqState = { 
+            topic: '', 
+            questions: [], 
+            answers: [], 
+            index: 0, 
+            remaining: 0, 
+            timerId: null,
+            difficulty: 'medium', // easy, medium, hard
+            consecutiveWrong: 0,
+            consecutiveRight: 0
+        };
+
+        let slide = 0; const totalSlides = 4;
+        function moveSlide(dir){ slide = (slide + dir + totalSlides) % totalSlides; updateCarousel(); }
+        function goSlide(i){ slide = i; updateCarousel(); }
+        function updateCarousel(){
+            document.getElementById('carouselTrack').style.transform = `translateX(-${slide*100}%)`;
+            document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active', i===slide));
+        }
+        setInterval(()=>moveSlide(1), 4500);
+
+        function showModule(id, btn){
+            document.querySelectorAll('.module').forEach(m=>m.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.module-tabs button').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function markComplete(id){
+            localStorage.setItem(id, 'done');
+            updateLessonStatus(id);
+            updateProgress();
+        }
+        function updateLessonStatus(id){
+            const badge = document.getElementById('badge-'+id);
+            if(!badge) return;
+            if(localStorage.getItem(id)==='done'){
+                badge.textContent = 'Done';
+                badge.className = 'badge done';
+                document.getElementById(id).classList.add('completed');
+            }
+        }
+        function updateProgress(){
+            let completed = 0;
+            lessons.forEach(id=>{ if(localStorage.getItem(id)==='done') completed++; });
+            const percent = Math.round((completed/lessons.length)*100);
+            const bar = document.getElementById('progressBar');
+            bar.style.width = percent + '%';
+            bar.textContent = percent + '%';
+            document.getElementById('completedLessons').textContent = completed;
+            document.getElementById('progressPercent').textContent = percent + '%';
+            document.getElementById('dashLessons').textContent = completed;
+            document.getElementById('weakAreas').textContent = completed < 5 ? 'বাংলা ব্যাকরণে মনোযোগ দিন' : 'Keep drilling mocks';
+            document.getElementById('dashWeak').textContent = completed < 5 ? 'Percentage' : 'Seating';
+            document.getElementById('dashAccuracy').textContent = completed < 6 ? 'Est. 62%' : 'Est. 78%';
+        }
+
+        function searchLessons(){
+            const q = document.getElementById('searchBox').value.toLowerCase();
+            document.querySelectorAll('.lesson').forEach(lsn=>{
+                const match = lsn.textContent.toLowerCase().includes(q);
+                lsn.style.display = match ? 'block' : 'none';
+            });
+        }
+
+        function startMCQ(topic, count, startDifficulty = 'medium'){
+            const questions = buildQuestionSet(topic, count, startDifficulty);
+            mcqState = {
+                topic,
+                questions,
+                answers: Array(questions.length).fill(null),
+                index: 0,
+                remaining: Math.max(1, count) * 60,
+                timerId: mcqState.timerId ? clearInterval(mcqState.timerId) : null,
+                difficulty: startDifficulty,
+                consecutiveWrong: 0,
+                consecutiveRight: 0
+            };
+            document.getElementById('mcqTopic').innerHTML = `${topic} MCQ <span class="difficulty-indicator difficulty-${startDifficulty}">${getDifficultyEmoji(startDifficulty)} ${startDifficulty.toUpperCase()}</span>`;
+            document.getElementById('mcqSubmitBtn').onclick = submitMCQ;
+            document.getElementById('mcqSubmitBtn').textContent = 'Submit';
+            document.getElementById('mcqModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            renderQuestion();
+            startTimer();
+        }
+
+        function getDifficultyEmoji(diff) {
+            return diff === 'easy' ? '🟢' : diff === 'medium' ? '🟡' : '🔴';
+        }
+
+        function buildQuestionSet(topic, count, difficulty = 'medium'){
+            let base = questionBank[topic] && questionBank[topic].length ? questionBank[topic] : questionBank['Quick Mix'];
+            if(!base.length){
+                base = [
+                    { q: `${topic}: Find the correct option.`, options: ['Option A','Option B','Option C','Option D'], answer: 0, explain: 'Use provided topic notes to choose best answer.', difficulty: 'medium' }
+                ];
+            }
+            if(topic === 'Quick Mix'){
+                base = Object.values(questionBank).flat().filter(Boolean);
+            }
+            
+            // Tag questions with difficulty if not already tagged
+            base = base.map((q, idx) => ({
+                ...q,
+                difficulty: q.difficulty || (idx < base.length * 0.3 ? 'easy' : idx < base.length * 0.7 ? 'medium' : 'hard')
+            }));
+            
+            // Filter by current difficulty preference (with fallback)
+            let filtered = base.filter(q => q.difficulty === difficulty);
+            if (filtered.length < count) {
+                // Include adjacent difficulties
+                const adjacent = difficulty === 'easy' ? 'medium' : difficulty === 'hard' ? 'medium' : 'easy';
+                filtered = [...filtered, ...base.filter(q => q.difficulty === adjacent)];
+            }
+            if (filtered.length < count) {
+                filtered = base; // Use all if still not enough
+            }
+            
+            // Shuffle using Fisher-Yates
+            const shuffled = [...filtered];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+            return selected.map(item => ({ ...item }));
+        }
+
+        function renderQuestion(){
+            const q = mcqState.questions[mcqState.index];
+            const total = mcqState.questions.length;
+            document.getElementById('mcqMeta').textContent = `Question ${mcqState.index+1} of ${total}`;
+            document.getElementById('mcqProgress').textContent = `Answered ${mcqState.answers.filter(a=>a!==null).length} / ${total}`;
+            document.getElementById('mcqNextBtn').style.display = mcqState.index === total-1 ? 'none' : 'inline-flex';
+            document.getElementById('mcqSubmitBtn').textContent = mcqState.index === total-1 ? 'Submit' : 'Submit Early';
+
+            const checked = mcqState.answers[mcqState.index];
+            const options = q.options.map((opt, idx)=>{
+                const sel = checked === idx ? 'checked' : '';
+                return `<label class="mcq-option"><input type="radio" name="mcqOption" value="${idx}" ${sel}> <span>${String.fromCharCode(65+idx)}. ${opt}</span></label>`;
+            }).join('');
+            document.getElementById('mcqBody').innerHTML = `
+                <div class="mcq-question">${mcqState.index+1}. ${q.q}</div>
+                <div style="margin:6px 0 10px 0;font-size:12px;font-weight:700;color:#2563eb;">Source: ${q.source ? q.source.toUpperCase() : '—'}</div>
+                <div class="mcq-options">${options}</div>
+            `;
+        }
+
+        function captureSelection(){
+            const selected = document.querySelector('input[name="mcqOption"]:checked');
+            if(!selected) return null;
+            const val = Number(selected.value);
+            mcqState.answers[mcqState.index] = val;
+            return val;
+        }
+
+        function nextMCQ(){
+            const sel = captureSelection();
+            if(sel === null){ alert('Select an option to continue.'); return; }
+            
+            // Check if answer is correct
+            const currentQ = mcqState.questions[mcqState.index];
+            const isCorrect = sel === currentQ.answer;
+            
+            // Adaptive difficulty adjustment
+            if (isCorrect) {
+                mcqState.consecutiveRight++;
+                mcqState.consecutiveWrong = 0;
+                
+                // 3 consecutive correct → increase difficulty
+                if (mcqState.consecutiveRight >= 3 && mcqState.difficulty !== 'hard') {
+                    mcqState.difficulty = mcqState.difficulty === 'easy' ? 'medium' : 'hard';
+                    mcqState.consecutiveRight = 0;
+                    showDifficultyChange('up');
+                }
+            } else {
+                mcqState.consecutiveWrong++;
+                mcqState.consecutiveRight = 0;
+                
+                // Track mistake in notebook
+                trackMistake(currentQ, mcqState.topic);
+                
+                // 3 consecutive wrong → decrease difficulty
+                if (mcqState.consecutiveWrong >= 3 && mcqState.difficulty !== 'easy') {
+                    mcqState.difficulty = mcqState.difficulty === 'hard' ? 'medium' : 'easy';
+                    mcqState.consecutiveWrong = 0;
+                    showDifficultyChange('down');
+                }
+                
+                // Check for repeated concept mistakes
+                checkRepeatedMistake(currentQ);
+            }
+            
+            // Update difficulty indicator
+            document.getElementById('mcqTopic').innerHTML = `${mcqState.topic} MCQ <span class="difficulty-indicator difficulty-${mcqState.difficulty}">${getDifficultyEmoji(mcqState.difficulty)} ${mcqState.difficulty.toUpperCase()}</span>`;
+            
+            if(mcqState.index < mcqState.questions.length-1){
+                mcqState.index++;
+                renderQuestion();
+            } else {
+                submitMCQ();
+            }
+        }
+
+        function showDifficultyChange(direction) {
+            const msg = direction === 'up' 
+                ? '📈 Difficulty increased! You\'re doing great!' 
+                : '📉 Difficulty adjusted. Let\'s build your confidence!';
+            
+            // Brief toast notification
+            const toast = document.createElement('div');
+            toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#0ea5e9,#2563eb);color:white;padding:12px 20px;border-radius:12px;font-weight:bold;z-index:400;animation:fadeInOut 2s ease forwards;';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        function submitMCQ(auto=false){
+            captureSelection();
+            stopTimer();
+            const total = mcqState.questions.length;
+            let correct = 0; let wrong = 0; let skipped = 0; const breakdown = [];
+            mcqState.questions.forEach((q, idx)=>{
+                const sel = mcqState.answers[idx];
+                if(sel === null){ skipped++; }
+                else if(sel === q.answer){ correct++; }
+                else { wrong++; }
+                breakdown.push({
+                    q: q.q,
+                    selected: sel,
+                    correct: q.answer,
+                    options: q.options,
+                    explain: q.explain
+                });
+            });
+            const scorePct = Math.round((correct/total)*100);
+            persistMcqStats(mcqState.topic, correct, total);
+            const weakList = computeWeakAreas();
+            updateWeakAreaWidgets();
+
+            const rows = breakdown.map((item, i)=>{
+                const selText = item.selected===null ? 'Not answered' : `${String.fromCharCode(65+item.selected)}. ${item.options[item.selected]}`;
+                const correctText = `${String.fromCharCode(65+item.correct)}. ${item.options[item.correct]}`;
+                const status = item.selected===item.correct ? '<span class="pill green">Correct</span>' : '<span class="pill red">Wrong</span>';
+                return `<div class="explain"><div><strong>Q${i+1}.</strong> ${item.q}</div><div>${status} | Your: ${selText} | Key: ${correctText}</div><div>${item.explain}</div></div>`;
+            }).join('');
+
+            document.getElementById('mcqBody').innerHTML = `
+                <div class="mcq-result">
+                    <div class="mcq-score">
+                        <span class="pill blue">Score: ${scorePct}%</span>
+                        <span class="pill green">Correct: ${correct}</span>
+                        <span class="pill red">Wrong: ${wrong}</span>
+                        <span class="pill">Skipped: ${skipped}</span>
+                        <span class="pill">Time used: ${formatTimeUsed()}</span>
+                    </div>
+                    <div style="margin-top:8px; font-weight:700;">Weak hint: ${weakList[0] || 'Keep practicing strong topics'}</div>
+                </div>
+                ${rows}
+            `;
+            document.getElementById('mcqMeta').textContent = 'Result';
+            document.getElementById('mcqProgress').textContent = 'Review explanations to reinforce learning.';
+            document.getElementById('mcqNextBtn').style.display = 'none';
+            document.getElementById('mcqSubmitBtn').textContent = 'Close';
+            document.getElementById('mcqSubmitBtn').onclick = closeMCQ;
+        }
+
+        function formatTimeUsed(){
+            const used = Math.max(0, (mcqState.questions.length*60) - mcqState.remaining);
+            const m = Math.floor(used/60).toString().padStart(2,'0');
+            const s = (used%60).toString().padStart(2,'0');
+            return `${m}:${s}`;
+        }
+
+        function startTimer(){
+            updateTimerText();
+            mcqState.timerId = setInterval(()=>{
+                mcqState.remaining -= 1;
+                if(mcqState.remaining <= 0){
+                    mcqState.remaining = 0;
+                    updateTimerText();
+                    submitMCQ(true);
+                } else {
+                    updateTimerText();
+                }
+            }, 1000);
+        }
+
+        function stopTimer(){
+            if(mcqState.timerId){ clearInterval(mcqState.timerId); mcqState.timerId = null; }
+        }
+
+        function updateTimerText(){
+            const m = Math.floor(mcqState.remaining/60).toString().padStart(2,'0');
+            const s = (mcqState.remaining%60).toString().padStart(2,'0');
+            document.getElementById('mcqTimer').textContent = `${m}:${s}`;
+        }
+
+        function closeMCQ(){
+            stopTimer();
+            document.getElementById('mcqModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function persistMcqStats(topic, correct, total){
+            const data = JSON.parse(localStorage.getItem(mcqStatsKey) || '{}');
+            const prev = data[topic] || { correct: 0, total: 0 };
+            data[topic] = { correct: prev.correct + correct, total: prev.total + total };
+            localStorage.setItem(mcqStatsKey, JSON.stringify(data));
+        }
+
+        function computeWeakAreas(){
+            const data = JSON.parse(localStorage.getItem(mcqStatsKey) || '{}');
+            const entries = Object.entries(data).map(([topic, stats])=>{
+                const acc = stats.total ? Math.round((stats.correct / stats.total)*100) : 0;
+                return { topic, acc, total: stats.total };
+            }).filter(e=>e.total >= 3);
+            entries.sort((a,b)=>a.acc - b.acc);
+            return entries.slice(0,3).map(e=>`${e.topic} (${e.acc}%)`);
+        }
+
+        function updateWeakAreaWidgets(){
+            const weakList = computeWeakAreas();
+            const data = JSON.parse(localStorage.getItem(mcqStatsKey) || '{}');
+            const totals = Object.values(data).reduce((acc, cur)=>{
+                acc.correct += cur.correct || 0; acc.total += cur.total || 0; return acc; }, {correct:0,total:0});
+            const overallAcc = totals.total ? Math.round((totals.correct/totals.total)*100) : '—';
+            document.getElementById('weakAreas').textContent = weakList[0] || 'No weak area yet';
+            document.getElementById('dashWeak').textContent = weakList.join(', ') || 'Balanced';
+            document.getElementById('dashAccuracy').textContent = overallAcc === '—' ? '—' : `${overallAcc}%`;
+        }
+
+        function simulateWeakArea(){
+            const weakList = computeWeakAreas();
+            const pick = weakList[0] ? weakList[0].split(' (')[0] : 'Percentage';
+            startMCQ(pick, 10);
+        }
+
+        function startMock(){
+            startMCQ('Quick Mix', 30);
+        }
+
+        function showAnalysis(){
+            const weakList = computeWeakAreas();
+            alert(`Recent practice accuracy: ${document.getElementById('dashAccuracy').textContent}\nWeak: ${weakList[0] || 'None detected'}\nTip: attempt a timed Quick Mix mock.`);
+        }
+
+        // ========== MISTAKE NOTEBOOK SYSTEM ==========
+        function getMistakeNotebook() {
+            return JSON.parse(localStorage.getItem(mistakeNotebookKey) || '{}');
+        }
+
+        function saveMistakeNotebook(notebook) {
+            localStorage.setItem(mistakeNotebookKey, JSON.stringify(notebook));
+            updateMistakeCount();
+        }
+
+        function trackMistake(question, topic) {
+            const notebook = getMistakeNotebook();
+            const key = question.q.substring(0, 50); // Use first 50 chars as key
+            
+            if (!notebook[key]) {
+                notebook[key] = {
+                    question: question.q,
+                    correctAnswer: question.options[question.answer],
+                    explain: question.explain,
+                    topic: topic,
+                    count: 0,
+                    concept: extractConcept(question),
+                    lastMistake: null
+                };
+            }
+            
+            notebook[key].count++;
+            notebook[key].lastMistake = new Date().toISOString();
+            
+            saveMistakeNotebook(notebook);
+        }
+
+        function extractConcept(question) {
+            // Extract key concept from question for grouping
+            const concepts = ['বাহুল্য দোষ', 'আসত্তি', 'যোগ্যতা', 'জটিল বাক্য', 'সরল বাক্য', 'যৌগিক বাক্য', 'Percentage', 'Ratio', 'Time & Work', 'Series'];
+            const qText = question.q + ' ' + (question.explain || '');
+            for (const c of concepts) {
+                if (qText.includes(c)) return c;
+            }
+            return question.explain ? question.explain.substring(0, 30) : 'General';
+        }
+
+        function checkRepeatedMistake(question) {
+            const notebook = getMistakeNotebook();
+            const key = question.q.substring(0, 50);
+            
+            if (notebook[key] && notebook[key].count >= conceptThreshold) {
+                showConceptPopup(notebook[key].concept, notebook[key].topic);
+            }
+        }
+
+        function showConceptPopup(concept, topic) {
+            document.getElementById('conceptTitle').textContent = 'You\'re repeatedly missing this concept!';
+            document.getElementById('conceptMessage').innerHTML = `<strong>"${concept}"</strong><br>Revise this concept now to improve your score.`;
+            document.getElementById('conceptPopup').style.display = 'flex';
+            document.getElementById('conceptPopup').dataset.topic = topic;
+        }
+
+        function closeConceptPopup() {
+            document.getElementById('conceptPopup').style.display = 'none';
+        }
+
+        function reviseNow() {
+            closeConceptPopup();
+            closeMCQ();
+            // Scroll to relevant lesson or open notes
+            const topic = document.getElementById('conceptPopup').dataset.topic || '';
+            alert(`📖 Revision Tip: Review the notes for "${topic}" and focus on the concept highlighted. Then retry the MCQ!`);
+        }
+
+        function openMistakeNotebook() {
+            const notebook = getMistakeNotebook();
+            const entries = Object.values(notebook).sort((a, b) => b.count - a.count);
+            
+            const body = document.getElementById('notebookBody');
+            
+            if (entries.length === 0) {
+                body.innerHTML = `
+                    <div class="empty-notebook">
+                        <div class="icon">🎉</div>
+                        <h3>No Mistakes Yet!</h3>
+                        <p>Start practicing MCQs. Your mistakes will be tracked here for revision.</p>
+                    </div>
+                `;
+            } else {
+                // Group by concept
+                const grouped = {};
+                entries.forEach(e => {
+                    if (!grouped[e.concept]) grouped[e.concept] = [];
+                    grouped[e.concept].push(e);
+                });
+                
+                let html = '';
+                for (const [concept, items] of Object.entries(grouped)) {
+                    const totalCount = items.reduce((sum, i) => sum + i.count, 0);
+                    html += `<div style="margin-bottom:16px;">`;
+                    html += `<h4 style="color:#b91c1c;margin:0 0 8px 0;display:flex;justify-content:space-between;"><span>❌ ${concept}</span><span class="count">${totalCount} times</span></h4>`;
+                    
+                    items.slice(0, 3).forEach(item => {
+                        html += `
+                            <div class="mistake-item">
+                                <h4>${item.question.substring(0, 80)}... <span class="count">${item.count}x</span></h4>
+                                <p><strong>সঠিক উত্তর:</strong> ${item.correctAnswer}</p>
+                                <p style="font-size:12px;color:#6b7280;margin-top:4px;">${item.explain || ''}</p>
+                                <span class="concept-link" onclick="startMCQ('${item.topic}', 5, 'easy')">🔄 Practice This Topic</span>
+                            </div>
+                        `;
+                    });
+                    
+                    if (items.length > 3) {
+                        html += `<p style="color:#6b7280;font-size:12px;text-align:center;">+${items.length - 3} more mistakes in this concept</p>`;
+                    }
+                    html += `</div>`;
+                }
+                
+                body.innerHTML = html;
+            }
+            
+            document.getElementById('notebookModal').style.display = 'flex';
+        }
+
+        function closeNotebook() {
+            document.getElementById('notebookModal').style.display = 'none';
+        }
+
+        function clearMistakeNotebook() {
+            if (confirm('Are you sure you want to clear all tracked mistakes?')) {
+                localStorage.removeItem(mistakeNotebookKey);
+                updateMistakeCount();
+                closeNotebook();
+            }
+        }
+
+        function updateMistakeCount() {
+            const notebook = getMistakeNotebook();
+            const total = Object.values(notebook).reduce((sum, m) => sum + m.count, 0);
+            const badge = document.getElementById('mistakeCount');
+            badge.textContent = total > 99 ? '99+' : total;
+            badge.style.display = total > 0 ? 'block' : 'none';
+        }
+
+        function toggleTheme(){
+            const body = document.body;
+            body.classList.toggle('dark');
+            const mode = body.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme-bank', mode);
+            document.querySelector('.theme-toggle').textContent = mode === 'dark' ? '☀️' : '🌙';
+        }
+
+        window.onload = ()=>{
+            if(localStorage.getItem('theme-bank')==='dark'){
+                document.body.classList.add('dark');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+            lessons.forEach(updateLessonStatus);
+            updateProgress();
+            updateWeakAreaWidgets();
+            updateCarousel();
+            updateMistakeCount(); // Initialize mistake notebook badge
+        };
+
+        // Add CSS animation for toast
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+                15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
